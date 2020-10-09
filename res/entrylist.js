@@ -51,16 +51,7 @@ export const allList = [{
     category: '其他',
     favorite: false,
     color: '#1E88E5'
-}, {
-    key: 'shanglv',
-    icon: 'icon-ly',
-    text: '同程',
-    category: '其他',
-    type: 'thirdpart',
-    service: 'CityTourPhoneLoginService',
-    favorite: true,
-    color: '#1976D2'
-}, ];
+}];
 
 export function saveSelectedList(list) {
     localStorage.setItem(storageKey, JSON.stringify(list));
@@ -115,15 +106,6 @@ export let selectedList  =  [
         modal: true,
         favorite: true,
         color: '#FF5337'
-    }, {
-        key: 'shanglv',
-        icon: 'icon-ly',
-        text: '同程',
-        category: '其他',
-        type: 'thirdpart',
-        service: 'CityTourPhoneLoginService',
-        favorite: true,
-        color: '#35BEFB'
     }
 ];
 

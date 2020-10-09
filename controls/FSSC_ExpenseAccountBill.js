@@ -479,7 +479,8 @@ export default class ExpendAccountBill extends PureComponent {
                     }
                     <ExpenseAccountBillCard />
                     <CellLayoutTemplate textStyle={styles.textStyle} layoutStyle={styles.layoutStyle} titleStyle={styles.cellTitle} style={styles.card} items={['Explain']} />
-                    <CellLayoutTemplate textStyle={styles.textStyle} layoutStyle={styles.layoutStyle} titleStyle={styles.cellTitle} style={styles.card} items={['NO', 'Type', 'Region', 'StartDate', 'EndDate']} />
+                    <CellLayoutTemplate textStyle={styles.textStyle} layoutStyle={styles.layoutStyle} titleStyle={styles.cellTitle} style={styles.card} 
+                        items={['NO', 'Type', 'Companycar', 'PlateNumber', 'Driver', 'Region', 'StartDate', 'EndDate']} />
                     <AttachmentList style={[styles.card]} yigoid="AttachmentGrid" fileName="UploadName" filePath="Path" removable title="附件" />
                     <GridView layoutStyles={styles.card} yigoid="Grid1" {...gridMeta} />
                 </ScrollView>
