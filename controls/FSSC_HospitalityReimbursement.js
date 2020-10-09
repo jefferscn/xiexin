@@ -548,6 +548,9 @@ export default class HospitalityReimbursement extends PureComponent {
                                 arrow: true
                             },
                             {
+                                key: "IsManyBX",
+                            },
+                            {
                                 key: "PaymentMethod",
                                 textStyle: {
                                     fontSize: 16,

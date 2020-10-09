@@ -64,7 +64,6 @@ export default {
                             "SourcesOfBooks",
                             "ExpenseDate",
                             "PersonnelID",
-                            "IsEnterprisesPay",
                             "CurrencyID",
                             "TotalMoney",
                             "Reason"
@@ -100,10 +99,7 @@ export default {
                         "items": [
                             "StartDate",
                             "EndDate",
-                            "WorkingStandard",
-                            "WorkingDays",
-                            "RestStandard",
-                            "RestDays",
+                            "Totaldays1",
                             "Typeofbusinesstrip",
                             "Typeofbusinesstrip2",
                             "BusinessPurpose",

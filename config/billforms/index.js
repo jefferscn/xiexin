@@ -43,8 +43,12 @@ import FSSC_VATinvoice_View from './FSSC_VATinvoice_View';
 import FSSC_TaxiInvoice_View from './FSSC_TaxiInvoice_View';
 import FSSC_AirTicketInvoice_View from './FSSC_AirTicketInvoice_View';
 
+//JMRH
+import FSSC_FuzhouuanceBooks from './FSSC_FuzhouuanceBooks';
+//
 export default {
     default: defaultForm,
+    FSSC_FuzhouuanceBooks,
     FSSC_ExpenseAccountBillView,
     FSSC_ExpenseAccountBill,
     FSSC_BooksQuery,
