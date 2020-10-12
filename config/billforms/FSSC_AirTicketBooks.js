@@ -183,35 +183,11 @@ export default {
                                         "type": "element",
                                         "elementType": "SplitText",
                                         "elementProps": {
-                                            "yigoid": "FSSC_Date",
+                                            "yigoid": "FSSC_Date1",
                                             "style": {
                                                 "fontSize": 12,
                                                 "paddingTop": 12,
                                                 "textAlign": "right"
-                                            }
-                                        }
-                                    },
-                                    {
-                                        "type": "element",
-                                        "elementType": "MoneyWithCurrency",
-                                        "elementProps": {
-                                            "currencyField": {
-                                                "type": "element",
-                                                "elementType": "SplitText",
-                                                "elementProps": {
-                                                    "yigoid": "Currency",
-                                                    "style": {
-                                                        "fontSize": 12,
-                                                        "paddingRight": 2,
-                                                        "textAlign": "right"
-                                                    }
-                                                }
-                                            },
-                                            "moneyField": "FSSC_Total",
-                                            "containerStyle": {
-                                                "paddingBottom": 6,
-                                                "justifyContent": "flex-end",
-                                                "paddingRight": 0
                                             }
                                         }
                                     }
@@ -226,7 +202,7 @@ export default {
                                     "type": "element",
                                     "elementType": "SplitText",
                                     "elementProps": {
-                                        "yigoid": "Station_geton",
+                                        "yigoid": "FSSC_From",
                                         "showIndex": 1,
                                         "emptyStr": "未填",
                                         "style": {
@@ -242,7 +218,7 @@ export default {
                                     "type": "element",
                                     "elementType": "SplitText",
                                     "elementProps": {
-                                        "yigoid": "Station_getoff",
+                                        "yigoid": "FSSC_To",
                                         "showIndex": 1,
                                         "emptyStr": "未填",
                                         "style": {
@@ -254,14 +230,14 @@ export default {
                                         }
                                     }
                                 }
-                            },
-                            "secondKey": [
-                                "Flight_number"
-                            ],
-                            "teriatiaryKey": [
-                                "FSSC_Carrier"
-                            ]
-                        }
+                            }
+                        },
+                        "secondKey": [
+                            "Flight_number"
+                        ],
+                        "tertiaryKey": [
+                            "FSSC_Carrier"
+                        ]
                     }
                 }
             }

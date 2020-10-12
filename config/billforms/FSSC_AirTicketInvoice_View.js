@@ -8,57 +8,62 @@ export default {
         elementType: "Invoice",
         elementProps: {
             invoiceImage: invoiceImage,
-            rows: [
-                [{
-                    key: 'Station_geton',
-                    label: '出发'
-                },
-                {
-                    "type": "element",
-                    "elementType": "AwesomeFontIcon",
-                    "elementProps": {
-                        name: "long-arrow-right",
-                        size: 40,
-                    }
-                },
-                {
-                    key: 'Station_getoff',
-                    label: '到达'
-                }],
-                [
-                    {
-                        key: 'FSSC_Name',
-                        label: '姓名'
+            rows: [{
+                type: 'grid',
+                yigoid: 'Grid1',
+                rows: [
+                    [{
+                        key: 'cell1',
+                        label: '出发'
                     },
                     {
-                        key: 'FSSC_Total',
-                        label: '金额'
+                        "type": "element",
+                        "elementType": "AwesomeFontIcon",
+                        "elementProps": {
+                            name: "long-arrow-right",
+                            size: 40,
+                        }
                     },
                     {
-                        key: 'FSSC_Date',
-                        label: '日期'
-                    }
-                ],
-                [
-                    {
-                        key: 'FSSC_Time',
-                        label: '时间'
-                    },
-                    {
-                        key: 'FSSC_Seat',
-                        label: '坐席'
-                    },
-                    {
-                        key: 'Train_Number',
-                        label: '车次'
-                    }
-                ],
-                [
-                    {
-                        key: 'Serial_number',
-                        label: '发票码'
-                    }
+                        key: 'cell2',
+                        label: '到达'
+                    }], [
+                        {
+                            key: 'cell3',
+                            label: '航班号'
+                        },
+                        {
+                            key: 'cell7',
+                            label: '承运人'
+                        },
+                        {
+                            key: 'cell6',
+                            label: '等级'
+                        }
+                    ],
                 ]
+            },
+            [
+                {
+                    key: 'User_name',
+                    label: '姓名'
+                },
+                {
+                    key: 'FSSC_Total',
+                    label: '金额'
+                },
+                {
+                    key: 'FSSC_Date',
+                    label: '日期'
+                }
+            ],
+
+            [
+                {
+                    key: 'Serial_number',
+                    label: '发票码'
+                }
+            ]
             ]
         }
     }

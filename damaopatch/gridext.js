@@ -325,13 +325,13 @@ YIUI.Grid.prototype.deleteGridRow = async function (rowIndex, fireEvent) {
         }
 
         // 删除影子表数据
-        grid.tableKey && deleteShadowRow(form, grid, bookmark);
+        grid.tableKey && deleteShadowRow(form, grid, rowIndex);
 
         // 删除子明细数据
-        !grid.hasColExpand && deleteSubDetailData(form, grid, bookmark);
+        !grid.hasColExpand && deleteSubDetailData(form, grid, rowIndex);
 
         // 删除数据行
-        grid.tableKey && deleteData(form, grid, bookmark);
+        grid.tableKey && deleteData(form, grid, rowIndex);
 
         // 删除界面行并转移焦点
         ts.deleteRowAt(rowIndex, fireEvent);

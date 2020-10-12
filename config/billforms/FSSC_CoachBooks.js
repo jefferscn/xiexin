@@ -199,7 +199,18 @@ export default {
                             }
                         },
                         "secondKey": [
-                            "FSSC_Date",
+                            {
+                                "type": "element",
+                                "elementType": "ListText",
+                                "elementProps": {
+                                    "yigoid": "FSSC_Date",
+                                    "style": {
+                                        paddingLeft: 12,
+                                        opacity: '60%',
+                                        fontSize: 12,
+                                    }
+                                }
+                            },
                             {
                                 "type": "element",
                                 "elementType": "MoneyWithCurrency",
@@ -219,6 +230,7 @@ export default {
                                     "moneyField": "FSSC_Total",
                                     "containerStyle": {
                                         "paddingBottom": 6,
+                                        paddingLeft: 8,
                                         "justifyContent": "flex-end",
                                         "paddingRight": 0
                                     }

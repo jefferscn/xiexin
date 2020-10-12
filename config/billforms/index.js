@@ -99,6 +99,8 @@ export default {
     FSSC_TicketInvoice_View,
     FSSC_VATinvoice_View,
     FSSC_VATinvoice_Volumn_View: FSSC_VATinvoice_View,
+    FSSC_PersonBusTicketInvoice_View: FSSC_VATinvoice_View,
     FSSC_TaxiInvoice_View,
     FSSC_AirTicketInvoice_View,
+    FSSC_ShipTicketInvoice_View: FSSC_VATinvoice_View,
 };
