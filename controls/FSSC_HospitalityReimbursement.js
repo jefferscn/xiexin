@@ -382,6 +382,8 @@ const detailMeta = {
     "useBodyScroll": true,
     "hideAction": true,
     "primaryKey": "IndexID_D",
+    "removeType": "column",
+    "removeColumn": "cell4",
     "secondKey": [
         "FeeType"
     ],
@@ -558,6 +560,12 @@ export default class HospitalityReimbursement extends PureComponent {
                                 arrow: true
                             },
                             {
+                                key: "AttachmentsNumber",
+                                textStyle: {
+                                    fontSize: 16,
+                                }
+                            },
+                            {
                                 key: "Cause",
                                 textStyle: {
                                     fontSize: 15,
@@ -645,7 +653,8 @@ export default class HospitalityReimbursement extends PureComponent {
                     }}
                     ignoreItems={[
                         "New",
-                        "Close"
+                        "Close",
+                        "Refresh"
                     ]}
                 />
             </View>

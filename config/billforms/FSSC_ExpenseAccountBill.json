@@ -24,7 +24,8 @@
         "elementProps": {
             "ignoreItems": [
                 "New",
-                "Close"
+                "Close",
+                "Refresh"
             ],
             "captionMapping": {
                 "发送PDF文件至邮箱": "封面打印",

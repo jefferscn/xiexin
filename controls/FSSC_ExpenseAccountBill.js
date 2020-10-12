@@ -490,8 +490,13 @@ export default class ExpendAccountBill extends PureComponent {
                 <SegementToolbar
                     ignoreItems={[
                         "New",
-                        "Close"
+                        "Close",
+                        "Refresh"
                     ]}
+                    captionMapping={{
+                        "发送PDF文件至邮箱": "封面打印",
+                        "撤销已提交审批": "撤销"
+                    }}
                 />
             </View>
         )
