@@ -390,6 +390,10 @@ const detailMeta = {
     "tertiaryKey": [
         "SourcesOfBooks"
     ],
+    rightActions: [{
+        text: '显示',
+        columnKey: 'cell3',
+    }],
     "rightElement": {
         "type": "element",
         "elementType": "FlexBox",
@@ -480,7 +484,7 @@ export default class HospitalityReimbursement extends PureComponent {
                     }} />}
                     mode="dark"
                 />
-                <AutofitScrollView style={{ paddingBottom: 20 }}>                    
+                <AutofitScrollView style={{ paddingBottom: 20 }}>
                     {
                         formStatus != 'ok' ?
                             <View style={styles.mask}><ActivityIndicator /></View> : null
@@ -500,7 +504,7 @@ export default class HospitalityReimbursement extends PureComponent {
                                 containerStyle={styles.currentMain}
                                 moneyStyle={[styles.bigMoney, styles.lightText]} />
                         </View>
-                        <View style={[styles.row, {alignItems: 'flex-end'}]}>
+                        <View style={[styles.row, { alignItems: 'flex-end' }]}>
                             <View style={{ flex: 1 }}>
                                 <Text style={[styles.lightText, styles.font12]}>单据编号:</Text>
                                 <ListText emptyStr="" style={[styles.lightText, styles.font12, { paddingTop: 5 }]} yigoid="NO" />
@@ -509,73 +513,85 @@ export default class HospitalityReimbursement extends PureComponent {
                         </View>
                     </Card>
                     <Card style={[styles.firstCard, { overflow: 'visible' }]} bookmark="Status">
-                        <CellLayoutTemplate 
-                            getLayout={this.getLayout} 
+                        <CellLayoutTemplate
+                            getLayout={this.getLayout}
                             // layoutStyles={styles.layoutStyle}
                             contentAlign='left'
-                            contentLayoutStyle={{flexBasis: 'auto'}}
+                            contentLayoutStyle={{ flexBasis: 'auto' }}
                             contentTextStyle={styles.celllayoutText}
                             items={[
-                            {
-                                key: "ReimbursementPersonID",
-                                textStyle: {
-                                    fontSize: 16,
-                                }
-                            },
-                            {
-                                type: 'element',
-                                elementType: 'Seperator',
-                                elementProps: {}
-                            },
-                            {
-                                key: "PaymentDeptID",
-                                textStyle: {
-                                    fontSize: 20,
-                                    color: '#3B87CF',
+                                {
+                                    key: "ReimbursementPersonID",
+                                    textStyle: {
+                                        fontSize: 16,
+                                    }
                                 },
-                                arrow: true,
-                            },
-                            {
-                                key: "ReimbursementDeptID",
-                                textStyle: {
-                                    fontSize: 16,
+                                {
+                                    type: 'element',
+                                    elementType: 'Seperator',
+                                    elementProps: {}
                                 },
-                                arrow: true,
-                            },
-                            {
-                                key: "ReceivablesPersonID",
-                                textStyle: {
-                                    fontSize: 16,
+                                {
+                                    key: "PaymentDeptID",
+                                    textStyle: {
+                                        fontSize: 20,
+                                        color: '#3B87CF',
+                                    },
+                                    arrow: true,
                                 },
+<<<<<<< Updated upstream
                                 arrow: true
                             },
                             {
                                 key: "PaymentMethod",
                                 textStyle: {
                                     fontSize: 16,
+=======
+                                {
+                                    key: "ReimbursementDeptID",
+                                    textStyle: {
+                                        fontSize: 16,
+                                    },
+                                    arrow: true,
+>>>>>>> Stashed changes
                                 },
-                                arrow: true
-                            },
-                            {
-                                key: "AttachmentsNumber",
-                                textStyle: {
-                                    fontSize: 16,
+                                {
+                                    key: "ReceivablesPersonID",
+                                    textStyle: {
+                                        fontSize: 16,
+                                    },
+                                    arrow: true
+                                },
+                                {
+                                    key: "IsManyBX",
+                                },
+                                {
+                                    key: "PaymentMethod",
+                                    textStyle: {
+                                        fontSize: 16,
+                                    },
+                                    arrow: true
+                                },
+                                {
+                                    key: "AttachmentsNumber",
+                                    textStyle: {
+                                        fontSize: 16,
+                                    }
+                                },
+                                {
+                                    key: "Cause",
+                                    textStyle: {
+                                        fontSize: 15,
+                                        color: '#3B87CF',
+                                    }
+                                },
+                                {
+                                    key: "StandardMessage",
+                                    textStyle: {
+                                        fontSize: 16,
+                                    }
                                 }
-                            },
-                            {
-                                key: "Cause",
-                                textStyle: {
-                                    fontSize: 15,
-                                    color: '#3B87CF',
-                                }
-                            },
-                            {
-                                key: "StandardMessage",
-                                textStyle: {
-                                    fontSize: 16,
-                                }
-                            }
-                        ]} />
+                            ]} />
                     </Card>
                     <VisibleRelated yigoid="GridLayoutPanel1">
                         <Card
