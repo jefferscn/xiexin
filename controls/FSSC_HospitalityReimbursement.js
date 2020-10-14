@@ -539,21 +539,12 @@ export default class HospitalityReimbursement extends PureComponent {
                                     },
                                     arrow: true,
                                 },
-<<<<<<< Updated upstream
-                                arrow: true
-                            },
-                            {
-                                key: "PaymentMethod",
-                                textStyle: {
-                                    fontSize: 16,
-=======
                                 {
                                     key: "ReimbursementDeptID",
                                     textStyle: {
                                         fontSize: 16,
                                     },
                                     arrow: true,
->>>>>>> Stashed changes
                                 },
                                 {
                                     key: "ReceivablesPersonID",
