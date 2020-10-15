@@ -374,7 +374,8 @@ YIUI.Grid.prototype.deleteGridRow = async function (rowIndex, fireEvent) {
             }
         };
         const table = form.getDocument().getByKey(grid.tableKey);
-        table.setByBkmk(bookmark);
+        // table.setByBkmk(bookmark);
+        table.setPos(bookmark);
         delTblData(table);
     };
 

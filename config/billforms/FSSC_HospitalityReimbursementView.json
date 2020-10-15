@@ -50,12 +50,6 @@
                             "status": "NEW"
                         },
                         {
-                            "formKey": "FSSC_SubsidyReimbursement",
-                            "oid": "new",
-                            "text": "补贴",
-                            "status": "NEW"
-                        },
-                        {
                             "formKey": "FSSC_GeneralReimbursement",
                             "oid": "new",
                             "text": "通用",
