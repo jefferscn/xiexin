@@ -5,7 +5,7 @@ export const allList = [{
     text: '申请单',
     category: '单据类型',
     favorite: true,
-    formKey: 'FSSC_ExpenseAccountBillView',
+    formKey: 'FSSC_AccountCollectionView',
     oid: '-1',
     color: '#BBDEFB'
 }, {
@@ -67,7 +67,7 @@ export let selectedList  =  [
         text: '申请单',
         category: '单据类型',
         favorite: true,
-        formKey: 'FSSC_ExpenseAccountBillView',
+        formKey: 'FSSC_AccountCollectionView',
         oid: '-1',
         color: '#008DF5'
     }, {

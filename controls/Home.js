@@ -653,7 +653,7 @@ class TodoList extends PureComponent {
                         borderBottomWidth: 10,
                         borderBottomColor: '#F7F7F7',
                     }}
-                    primaryKey={<FlexBox direction="row" style={{ height: 60, flex: 1, paddingRight: 12, alignItems: 'center', paddingLeft: 16 }}>
+                    primaryKey={<FlexBox direction="row" style={{flex: 1, paddingRight: 12, alignItems: 'center' }}>
                         <BooksTypeImage yigoid="formKey" style={{ paddingRight: 12 }} />
                         <ListText yigoid="formname" style={{ flex: 1 }} />
                         <BadgeText yigoid="C" />

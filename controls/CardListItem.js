@@ -68,23 +68,34 @@ const styles = StyleSheet.create({
 
 @ListRowWrap
 class CardListItem extends PureComponent {
+    static defaultProps = {
+        formKeyField: 'FormKey_LV',
+        causeField: 'Cause',
+        currencyField: 'CurrencyID_LV',
+        amountField: 'ReimbursementAmount',
+        personField: 'ReimbursementPersonID',
+        deptField: 'PaymentDeptID',
+        billDateField: 'BillDate_LV',
+        NOField: 'NO_LV',
+    }
     render() {
+        const { formKeyField, causeField, currencyField, amountField, personField, deptField, billDateField, NOField } = this.props;
         return (
             <TouchableOpacity style={styles.container} onPress={this.props.onPress} pressRetentionOffset={pressRetentionOffset}>
                 <View style={styles.inner}>
-                    <ListText style={styles.text1} yigoid="NO_LV" />
-                    <ListText style={styles.text2} yigoid="BillDate_LV" />
-                    <ListText style={styles.text3} yigoid="PaymentDeptID" />
-                    <ListText style={styles.text4} yigoid="ReimbursementPersonID" />
+                    <ListText style={styles.text1} yigoid={NOField} />
+                    <ListText style={styles.text2} yigoid={billDateField} />
+                    <ListText style={styles.text3} yigoid={deptField} />
+                    <ListText style={styles.text4} yigoid={personField} />
                     <View style={styles.textContainer}>
-                        <SplitText style={styles.currency} yigoid="CurrencyID_LV" />
-                        <ListText style={styles.text5} yigoid="ReimbursementAmount" />
+                        <SplitText style={styles.currency} yigoid={currencyField} />
+                        <ListText style={styles.text5} yigoid={amountField} />
                     </View>
                     <View style={styles.textContainer}>
                         <Text style={styles.text6}>事由:  </Text>
-                        <ListText style={styles.text6} yigoid="Cause" />
+                        <ListText style={styles.text6} yigoid={amountField} />
                     </View>
-                    <TicketNameBadge yigoid="FormKey_LV" />
+                    <TicketNameBadge yigoid={formKeyField} />
                 </View>
             </TouchableOpacity>
         )
