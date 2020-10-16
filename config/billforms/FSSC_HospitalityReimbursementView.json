@@ -104,7 +104,9 @@
                             "elementProps": {
                                 "style": {
                                     "paddingLeft": 15,
-                                    "alignItems": "flex-start"
+                                    "alignItems": "flex-end",
+                                    "flex": 1,
+                                    "justifyContent": "center"
                                 },
                                 "showIcon": false,
                                 "startDateField": "BillDate_NODB4Other",
@@ -129,115 +131,18 @@
         "elementType": "ListView",
         "elementProps": {
             "yigoid": "list",
-            "primaryKey": "NO_LV",
             "style": {
                 "flex": 1
             },
-            "secondKey": [
-                "ReimbursementPersonID"
-            ],
-            "tertiaryKey": [
-                "PaymentDeptID"
-            ],
             "RowElement": {
                 "type": "element",
                 "elementType": "CardListItem",
                 "elementProps": {}
             },
-            "rightElement": {
-                "type": "element",
-                "elementType": "FlexBox",
-                "elementProps": {
-                    "direction": "column",
-                    "style": {
-                        "justifyContent": "space-between"
-                    },
-                    "items": [
-                        {
-                            "type": "element",
-                            "elementType": "SplitText",
-                            "elementProps": {
-                                "yigoid": "BillDate_LV",
-                                "style": {
-                                    "fontSize": 12,
-                                    "paddingTop": 12,
-                                    "textAlign": "right"
-                                }
-                            }
-                        },
-                        {
-                            "type": "element",
-                            "elementType": "Text",
-                            "elementProps": {
-                                "yigoid": "Status",
-                                "layoutStyles": {
-                                    "paddingBottom": 6,
-                                    "alignItems": "flex-end",
-                                    "paddingRight": 0
-                                },
-                                "textStyles": {
-                                    "fontSize": 12,
-                                    "textAlign": "right"
-                                }
-                            }
-                        }
-                    ]
-                }
-            },
             "divider": true
         }
     },
     "controls": {
-        "list": {
-            "control": "ListView",
-            "primaryKey": "NO_LV",
-            "secondKey": [
-                "ReimbursementPersonID"
-            ],
-            "tertiaryKey": [
-                "PaymentDeptID"
-            ],
-            "rightElement": {
-                "type": "element",
-                "elementType": "FlexBox",
-                "elementProps": {
-                    "direction": "column",
-                    "style": {
-                        "justifyContent": "space-between"
-                    },
-                    "items": [
-                        {
-                            "type": "element",
-                            "elementType": "SplitText",
-                            "elementProps": {
-                                "yigoid": "BillDate_LV",
-                                "style": {
-                                    "fontSize": 12,
-                                    "paddingTop": 12,
-                                    "textAlign": "right"
-                                }
-                            }
-                        },
-                        {
-                            "type": "element",
-                            "elementType": "Text",
-                            "elementProps": {
-                                "yigoid": "Status",
-                                "layoutStyles": {
-                                    "paddingBottom": 6,
-                                    "alignItems": "flex-end",
-                                    "paddingRight": 0
-                                },
-                                "textStyles": {
-                                    "fontSize": 12,
-                                    "textAlign": "right"
-                                }
-                            }
-                        }
-                    ]
-                }
-            },
-            "divider": true
-        }
+  
     }
 }

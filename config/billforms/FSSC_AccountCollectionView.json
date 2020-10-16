@@ -1,0 +1,96 @@
+{
+    "formTemplate": "list",
+    "head": {
+        "type": "element",
+        "elementType": "Header",
+        "elementProps": {
+            "canBack": true,
+            "titleElement": {
+                "type": "element",
+                "elementType": "FormTitle",
+                "elementProps": {
+                    "containerStyle": {
+                        "alignItems": "center",
+                        "justifyContent": "center"
+                    }
+                }
+            }
+        }
+    },
+    "action": {
+        "type": "element",
+        "elementType": "VisibleEqual",
+        "elementProps": {
+            "yigoid": "Status_NODB4Other",
+            "targetValue": "0",
+            "element": {
+                "type": "element",
+                "elementType": "OpenFormActionButton",
+                "elementProps": {
+                    "formKey": "FSSC_ExpenseAccountBill",
+                    "oid": "new",
+                    "status": "NEW",
+                    "style": {
+                        "right": "50%",
+                        "transform": "translateX(30px)"
+                    }
+                }
+            }
+        }
+    },
+    "refresh": {
+        "type": "button",
+        "buttonId": "Query"
+    },
+    "filterBlock": {
+        "type": "element",
+        "elementType": "FilterBlock",
+        "elementProps": {
+            "defaultValue": {
+                "Status_NODB4Other": "0"
+            },
+            "filterItems": [{
+                "type": "element",
+                "elementType": "SegementCombobox",
+                "elementProps": {
+                    "yigoid": "Status_NODB4Other",
+                    "style" : {
+                        "flex": 1
+                    },
+                    "titleMapping": {
+                        "审批未通过": "未通过"
+                    }
+                }
+            }],
+            "comboboxId": "Status_NODB4Other",
+            "hasMore": true,
+            "moreItems": [
+                "PersonnelID_NODB4Other",
+                "NO_NODB4Other",
+                "FormKey_NODB4Other"
+            ],
+            "queryButton": "Query"
+        }
+    },
+    "list": {
+        "type": "element",
+        "elementType": "ListView",
+        "elementProps": {
+            "yigoid": "ListView1",
+            "style": {
+                "flex": 1
+            },
+            "RowElement": {
+                "type": "element",
+                "elementType": "CardListItem",
+                "elementProps": {
+                    "personField": "PersonnelID_LV",
+                    "deptField": "CostDept_LV",
+                    "amountField": "ApplyMoney_LV",
+                    "causeField": "Explain_LV"
+                }
+            },
+            "divider": true
+        }
+    }
+}
