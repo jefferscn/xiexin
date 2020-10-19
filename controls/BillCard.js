@@ -69,12 +69,17 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         paddingLeft: 12,
         paddingRight: 12,
+        paddingTop: 2,
+        paddingBottom: 2,
     },
     flex1: {
         flex: 1,
     },
     columnTextPadding: {
         paddingTop: 5,
+    },
+    textAlignCenter: {
+        textAlign: 'center',
     }
 });
 
@@ -83,8 +88,8 @@ export class ColumnLabelText extends PureComponent {
         const { style, yigoid, label, inverse } = this.props;
         return (
             <View style={[styles.columnTextContainer, style]}>
-                <ListText style={styles.colorWhite} yigoid={yigoid} emptyStr="0" />
                 <Text style={[styles.colorWhite, styles.columnTextPadding]}>{label}</Text>
+                <ListText style={[styles.colorWhite, styles.textAlignCenter]} yigoid={yigoid} emptyStr="0" />
             </View>
         )
     }

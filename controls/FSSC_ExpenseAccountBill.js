@@ -427,21 +427,6 @@ export default class ExpendAccountBill extends PureComponent {
     render() {
         const { items, pageStyle, topBackground, formStatus, error, errorMsg } = this.props;
         let actionButton = this.context.createElement(actionMeta);
-        // if (error) {
-        //     return (<View style={styles.container}>
-        //         <Header
-        //             canBack={true}
-        //             headerStyle={{
-        //                 border: 0,
-        //             }}
-        //             title={"出差申请单"}
-        //             mode="light"
-        //         />
-        //         <View style={styles.errorContainer}>
-        //             <Text>{errorMsg.message}</Text>
-        //         </View>
-        //     </View>)
-        // }
         return (
             <View style={[styles.page, pageStyle]}>
                 {

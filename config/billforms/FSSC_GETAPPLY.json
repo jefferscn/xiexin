@@ -1,0 +1,23 @@
+{
+    "formTemplate": "modal",
+    "content": {
+        "type": "element",
+        "elementType": "GridView",
+        "elementProps": {
+            "yigoid": "Grid1",
+            "showHead": true,
+            "headTitle": "招待申请",
+            "hideAction": true,
+            "useBodyScroll": true,
+            "clickMode": "dblclick",
+            "primaryKey": "BillNO",
+            "secondKey": ["StartDate"]
+        }
+    },
+    "popup": true,
+    "maskClosable": true,
+    "actions": [{
+        "text": "刷新",
+        "yigoid": "query"
+    }]
+}

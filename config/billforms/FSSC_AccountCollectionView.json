@@ -27,13 +27,25 @@
                 "type": "element",
                 "elementType": "OpenFormActionButton",
                 "elementProps": {
-                    "formKey": "FSSC_ExpenseAccountBill",
-                    "oid": "new",
-                    "status": "NEW",
                     "style": {
                         "right": "50%",
                         "transform": "translateX(30px)"
-                    }
+                    },
+                    "multiple": true,
+                    "items": [
+                        {
+                            "formKey": "FSSC_ExpenseAccountBill",
+                            "oid": "new",
+                            "text": "出差申请",
+                            "status": "NEW"
+                        },
+                        {
+                            "formKey": "FSSC_Entertainsapply",
+                            "oid": "new",
+                            "text": "招待申请",
+                            "status": "NEW"
+                        }
+                    ]
                 }
             }
         }

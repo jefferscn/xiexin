@@ -46,10 +46,14 @@ import FSSC_AccountCollectionView from './FSSC_AccountCollectionView.json';
 
 //JMRH
 import FSSC_FuzhouuanceBooks from './FSSC_FuzhouuanceBooks';
+import FSSC_Entertainsapply from './FSSC_Entertainsapply';
+import FSSC_GETAPPLY from './FSSC_GETAPPLY.json';
 //
 export default {
     default: defaultForm,
     FSSC_FuzhouuanceBooks,
+    FSSC_Entertainsapply,
+    FSSC_GETAPPLY_modal: FSSC_GETAPPLY,
     FSSC_ExpenseAccountBillView,
     FSSC_ExpenseAccountBill,
     FSSC_BooksQuery,
