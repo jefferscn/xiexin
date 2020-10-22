@@ -24,6 +24,39 @@ const actionMeta = {
         }
     }
 }
+
+const detailMeta = {
+    "control": "GridView",
+    "showHead": true,
+    "headTitle": "人员明细",
+    "useBodyScroll": true,
+    "primaryKey": "Personnel",
+    "secondKey": [
+        "ExplainDtl"
+    ],
+    headExtra: {
+        "type": "element",
+        "elementType": "GridAddRow",
+        "elementProps": {
+            yigoid: "detail",
+            children: {
+                "type": "element",
+                "elementType": "IconButton",
+                "elementProps": {
+                    icon: "plus",
+                    style: {
+                        flex: 1,
+                        width: 50,
+                    },
+                    iconStyle: {
+                        color: 'rgb(33, 150, 243)',
+                    }
+                }
+            }
+        }
+    },
+};
+
 const gridMeta = {
     "control": "GridView",
     "showHead": true,
@@ -482,6 +515,7 @@ export default class ExpendAccountBill extends PureComponent {
                     <CellLayoutTemplate textStyle={styles.textStyle} layoutStyle={styles.layoutStyle} titleStyle={styles.cellTitle} style={styles.card} items={['NO', 'Type', 'Region', 'StartDate', 'EndDate']} />
                     <AttachmentList style={[styles.card]} yigoid="AttachmentGrid" fileName="UploadName" filePath="Path" removable title="附件" />
                     <GridView layoutStyles={styles.card} yigoid="Grid1" {...gridMeta} />
+                    <GridView layoutStyles={styles.card} yigoid="detail" {...detailMeta} />
                 </ScrollView>
                 {
                     actionButton
