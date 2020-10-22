@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
         width: '33%',
         display: 'inline-flex',
         padding: 5,
-        height: 220,
+        height: 250,
     },
     inner: {
         borderRadius: 10,
@@ -93,7 +93,7 @@ class CardListItem extends PureComponent {
                     </View>
                     <View style={styles.textContainer}>
                         <Text style={styles.text6}>事由:  </Text>
-                        <ListText style={styles.text6} yigoid={amountField} />
+                        <ListText style={styles.text6} yigoid={causeField} />
                     </View>
                     <TicketNameBadge yigoid={formKeyField} />
                 </View>
