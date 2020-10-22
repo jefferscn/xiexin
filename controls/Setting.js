@@ -34,7 +34,7 @@ class VersionCheckItem extends PureComponent {
             }
         }
         return (<Item extra={extra} >
-            {`title(${currentVersion})`}
+            {`${title}(${currentVersion})`}
         </Item>);
     }
 }
