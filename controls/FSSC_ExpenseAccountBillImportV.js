@@ -43,7 +43,7 @@ export default class ExpenseAccountBillImport extends PureComponent {
                     secondKey={["Region"]}
                     clickMode="dblclick"
                     hideAction={true}
-                    tertiaryKey={["PersonnelID_LV"]}
+                    tertiaryKey={["Explain"]}
                 />
             </View>
         </Modal>);

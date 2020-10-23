@@ -28,18 +28,18 @@ class InvoiceValidBadge extends PureComponent {
         const { value}  = this.props;
         if(!value) {
             return {
-                text: "未验证",
-                color: "#FFEB3B"
+                text: "未验真",
+                color: "#FFEB3B",
             };
         }
-        if(value=="1000") {
+        if(value=="10000") {
             return {
-                text: "验证通过",
+                text: "验真通过",
                 color: "#8BC34A",
             };
         }
         return {
-            text: "验证失败",
+            text: "验真失败",
             color: "#F44336"
         }
     }
