@@ -96,14 +96,14 @@ const entryList = [
                 iconColor: '#008DF5',
                 icon: 'icon-FSSC_TravelReimbursement',
             },
-            {
-                text: '补贴费',
-                formKey: 'FSSC_SubsidyReimbursement',
-                oid: "new",
-                status: 'NEW',
-                iconColor: '#008DF5',
-                icon: 'icon-FSSC_SubsidyReimbursement',
-            },
+            // {
+            //     text: '补贴费',
+            //     formKey: 'FSSC_SubsidyReimbursement',
+            //     oid: "new",
+            //     status: 'NEW',
+            //     iconColor: '#008DF5',
+            //     icon: 'icon-FSSC_SubsidyReimbursement',
+            // },
             {
                 text: '通用',
                 formKey: 'FSSC_GeneralReimbursement',
@@ -118,8 +118,16 @@ const entryList = [
         icon: 'icon-more',
         entries: [
             {
-                text: '申请单',
+                text: '出差申请',
                 formKey: 'FSSC_ExpenseAccountBill',
+                oid: "new",
+                icon: 'icon-chuchashenqingdan',
+                status: 'NEW',
+                iconColor: '#008DF5'
+            },
+            {
+                text: '招待申请',
+                formKey: 'FSSC_Entertainsapply',
                 oid: "new",
                 icon: 'icon-chuchashenqingdan',
                 status: 'NEW',
