@@ -40,7 +40,14 @@ export default class ExpenseAccountBillImport extends PureComponent {
                     useBodyScroll={true}
                     showArrow={false}
                     primaryKey="NO_LV"
-                    secondKey={["Region"]}
+                    secondKey={[{
+                        type: 'element',
+                        elementType: 'SplitText',
+                        elementProps: {
+                            showIndex: 1,
+                            yigoid: 'Region',
+                        }
+                    }]}
                     clickMode="dblclick"
                     hideAction={true}
                     tertiaryKey={["Explain"]}
