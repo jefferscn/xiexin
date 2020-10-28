@@ -325,19 +325,19 @@ YIUI.Grid.prototype.deleteGridRow = async function (rowIndex, fireEvent) {
         }
 
         // 删除影子表数据
-        grid.tableKey && deleteShadowRow(form, grid, rowIndex);
+        grid.tableKey && deleteShadowRow(form, grid, bookmark);
 
         // 删除子明细数据
-        !grid.hasColExpand && deleteSubDetailData(form, grid, rowIndex);
+        !grid.hasColExpand && deleteSubDetailData(form, grid, bookmark);
 
         // 删除数据行
-        grid.tableKey && deleteData(form, grid, rowIndex);
+        grid.tableKey && deleteData(form, grid, bookmark);
 
         // 删除界面行并转移焦点
         ts.deleteRowAt(rowIndex, fireEvent);
 
         // 删除行事件
-        grid.gridHandlerExt.rowDelete(form, grid, rowIndex, fireEvent);
+        grid.gridHandlerExt.rowDelete(form, grid, bookmark, fireEvent);
     };
 
     const deleteData = function (form, grid, bookmark) {
@@ -374,8 +374,8 @@ YIUI.Grid.prototype.deleteGridRow = async function (rowIndex, fireEvent) {
             }
         };
         const table = form.getDocument().getByKey(grid.tableKey);
-        // table.setByBkmk(bookmark);
-        table.setPos(bookmark);
+        table.setByBkmk(bookmark);
+        // table.setPos(bookmark);
         delTblData(table);
     };
 
