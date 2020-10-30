@@ -484,12 +484,12 @@ export default class HospitalityReimbursement extends PureComponent {
                     }} />}
                     mode="dark"
                 />
-                <View style={{flex:1}}>
+                <View style={{ flex: 1 }}>
                     {
                         (formStatus != 'ok' || busying) ?
                             <View style={styles.mask}><ActivityIndicator /></View> : null
                     }
-                    <AutofitScrollView style={{ flex: 1, paddingBottom: 20 }}>
+                    <AutofitScrollView style={{ paddingBottom: 20 }}>
                         <Card background={zhaodai_bg} style={styles.firstCard}>
                             <View style={styles.row}>
                                 <Text style={[styles.lightText, styles.font12]}>单据日期: </Text>
@@ -601,25 +601,6 @@ export default class HospitalityReimbursement extends PureComponent {
                                 <View style={styles.cardline}>
                                     <Text style={{ fontSize: 13, fontWeight: 'bold' }}>出差事由: </Text>
                                     <ListText style={{ color: '#666666', paddingLeft: 8 }} yigoid="ApplicationExplain" emptyStr="" />
-                                </View>
-                            </Card>
-                        </VisibleRelated>
-                        <VisibleRelated yigoid="GridLayoutPanel5">
-                            <Card
-                                style={styles.firstCard}
-                                title="关联招待申请单"
-                                yigoid="Button5"
-                                headIcon={
-                                    <XieinIcon name="icon-chuchashenqingdan" color="#F48520" size={20} />
-                                }
-                                collapseable={false}
-                                extra={
-                                    <ListText style={styles.cardTitleExtra} yigoid="EntertainsapplyDate" emptyStr="" />
-                                }
-                            >
-                                <View style={styles.cardline}>
-                                    <Text style={{ fontSize: 13, fontWeight: 'bold' }}>编号 : </Text>
-                                    <ListText style={{ color: '#666666', paddingLeft: 8 }} yigoid="EntertainsapplyNO" emptyStr="" />
                                 </View>
                             </Card>
                         </VisibleRelated>

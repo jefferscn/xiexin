@@ -1,3 +1,5 @@
+import ProjectCfg from '../config/project';
+
 const currencyData = {
     'CNY': '¥',
     'USD': '$',
@@ -13,5 +15,8 @@ export default {
         }
         const result = currencyData[code.toUpperCase()];
         return result || code;
-    }
+    },
+    getProjectKey: (v)=>{
+        return `${ProjectCfg.sessionKey}_${v}`;
+    },
 }

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-// import { Button } from 'react-native-material-ui';
-// eslint-disable-next-line import/no-unresolved
-import { Platform, StyleSheet, View, TextInput, Text, Image, Button, ImageBackground } from 'react-native';
+import { Platform, StyleSheet, View, TextInput, Text, Image, Button, ImageBackground, Switch } from 'react-native';
 import { LoginWrap as loginWrap } from 'yes'; // eslint-disable-line
 import Icon from 'react-native-vector-icons/FontAwesome';
 import LoginBG from '../res/login_bg.png';
+import util from '../util';
 
 const styles = StyleSheet.create({
     textinput: {
@@ -68,6 +67,14 @@ const styles = StyleSheet.create({
         fontSize: 24,
         width: '100%',
         textAlign: 'center',
+    },
+    row: {
+        flexDirection: 'row',
+        paddingTop: 10,
+        justifyContent: 'flex-end',
+    },
+    text: {
+        paddingLeft: 10,
     }
 });
 if (Platform.OS === 'web') {
@@ -85,6 +92,7 @@ class Login extends Component {
             userTextInputBottomBorderColor: '#8a8a8a',
             passwordTextInputBottomBorderColor: '#8a8a8a',
             loginType: 'userAccount',
+            savePassword: false,
         };
         this.handleUserChange = this.handleUserChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
@@ -116,9 +124,13 @@ class Login extends Component {
     }
     handleUserChange(v) {
         this.setState({ user: v });
+        localStorage.setItem(util.getProjectKey("user"), v);
     }
     handlePasswordChange(v) {
         this.setState({ password: v });
+        if (this.state.savePassword) {
+            localStorage.setItem(util.getProjectKey("password"), v);
+        }
     }
     handleClickLogin() {
         this.props.handleClickLogin(
@@ -131,7 +143,33 @@ class Login extends Component {
     changeLoginType = (loginType) => {
         this.setState({
             loginType,
-        })
+        });
+    }
+    onSavePasswordChange = (v) => {
+        this.setState({
+            savePassword: v,
+        });
+        localStorage.setItem(util.getProjectKey("savePassword"), v ? 1 : '');
+        if (!v) {
+            localStorage.setItem(util.getProjectKey("password"), '');
+        }
+    }
+    componentDidMount() {
+        const user = localStorage.getItem(util.getProjectKey("user"));
+        const savePassword = localStorage.getItem(util.getProjectKey("savePassword"));
+        if (savePassword) {
+            const password = localStorage.getItem(util.getProjectKey("password"));
+            this.setState({
+                user,
+                password,
+                savePassword: !!savePassword,
+            });
+            return;
+        }
+        this.setState({
+            user,
+            savePassword: !!savePassword,
+        });
     }
     render() {
         const userTextInputStyle = [styles.textinput, {
@@ -143,7 +181,7 @@ class Login extends Component {
         return (
             <View style={styles.main}>
                 <View style={styles.main_1}>
-                    <ImageBackground style={{flex:1}} source={LoginBG} />
+                    <ImageBackground style={{ flex: 1 }} source={LoginBG} />
                 </View>
                 <View style={styles.main_2}>
                     <Text style={styles.sysText}>欢迎登录</Text>
@@ -189,6 +227,15 @@ class Login extends Component {
                                     title="登录"
                                     onPress={this.handleClickLogin}
                                 >登录</Button>
+                            </View>
+                            <View style={styles.row} >
+                                <Switch
+                                    value={this.state.savePassword}
+                                    activeThumbColor={'#2196f3'}
+                                    activeTrackColor={'#79c3fd'}
+                                    thumbColor={'gray'}
+                                    onValueChange={this.onSavePasswordChange} />
+                                <Text>保存密码</Text>
                             </View>
                         </View>
                     </View>
