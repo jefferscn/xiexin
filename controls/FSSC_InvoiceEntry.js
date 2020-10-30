@@ -123,6 +123,7 @@ export default class InvoiceEntry extends PureComponent {
             try {
                 file = await this.context.getPicture(0, 60, 1000);
             } catch (ex) {
+                console.log(ex);
                 if (ex !== 'usercancel') {
                     Util.alert('错误', ex.messsage);
                 }
@@ -135,6 +136,7 @@ export default class InvoiceEntry extends PureComponent {
             // const file = await this.context.getPicture(0, 60, 1000);
             Util.safeExec(async () => {
                 try {
+                    console.log(file);
                     const result = await this.context.uploadImage(formKey, oid, file.file, file.name);
                     this.setState({
                         step: 2,
@@ -192,6 +194,9 @@ export default class InvoiceEntry extends PureComponent {
         return {
             color: '#FF5722',
         }
+    }
+    txtMapping = {
+        "其他错误": "验真失败",
     }
     render() {
         const { formStatus, errorMsg, busying } = this.props;
@@ -281,7 +286,7 @@ export default class InvoiceEntry extends PureComponent {
                                     "cell8",
                                     <CheckboxLabel style={styles.label} falseLabel="费用类型不符" yigoid="IsCompliance" />,
                                     <CheckboxLabel style={styles.label} trueLabel="已引用" yigoid="IsUsed" />,
-                                    <ListText style={styles.label} emptyStr="未验真" styleMapping={this.colorMapping} yigoid="Validation_Code" />
+                                    <ListText style={styles.label} emptyStr="未验真" textMapping={this.txtMapping} styleMapping={this.colorMapping} yigoid="Validation_Code" />
                                 ]}
                                 rightElement={<ScriptWrap script={script}><ListImage yigoid="cell7" containerStyle={{ justifyContent: 'center' }} style={{ width: 60, height: 40 }} /></ScriptWrap>}
                                 showArrow={false}

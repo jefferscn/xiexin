@@ -451,7 +451,7 @@ export default class HospitalityReimbursement extends PureComponent {
         return <ColumnLabelLayout showArrow={item.arrow} textStyle={item.textStyle} />
     }
     render() {
-        const { pageStyle, error, errorMsg, formStatus } = this.props;
+        const { pageStyle, error, errorMsg, formStatus, busying } = this.props;
         let actionButton = this.context.createElement(actionMeta);
         return (
             <View style={[styles.page, pageStyle]}>
@@ -484,169 +484,171 @@ export default class HospitalityReimbursement extends PureComponent {
                     }} />}
                     mode="dark"
                 />
-                <AutofitScrollView style={{ paddingBottom: 20 }}>
+                <View style={{ flex: 1 }}>
                     {
-                        formStatus != 'ok' ?
+                        (formStatus != 'ok' || busying) ?
                             <View style={styles.mask}><ActivityIndicator /></View> : null
                     }
-                    <Card background={zhaodai_bg} style={styles.firstCard}>
-                        <View style={styles.row}>
-                            <Text style={[styles.lightText, styles.font12]}>单据日期: </Text>
-                            <ListText style={[styles.lightText, styles.font12]} yigoid="BillDate" />
-                            <MoneyWithCurrency
-                                currencyField={
-                                    <SplitText emptyStr="" format={Util.currencyCodeToSign} style={styles.currency} yigoid="CurrencyID" />
-                                }
-                                // moneyField="ReimbursementAmount"
-                                moneyField={
-                                    <ListText style={[styles.bigMoney, styles.lightText]} yigoid="ActualPaymentAmount" emptyStr="0" />
-                                }
-                                containerStyle={styles.currentMain}
-                                moneyStyle={[styles.bigMoney, styles.lightText]} />
-                        </View>
-                        <View style={[styles.row, { alignItems: 'flex-end' }]}>
-                            <View style={{ flex: 1 }}>
-                                <Text style={[styles.lightText, styles.font12]}>单据编号:</Text>
-                                <ListText emptyStr="" style={[styles.lightText, styles.font12, { paddingTop: 5 }]} yigoid="NO" />
+                    <AutofitScrollView style={{ paddingBottom: 20 }}>
+                        <Card background={zhaodai_bg} style={styles.firstCard}>
+                            <View style={styles.row}>
+                                <Text style={[styles.lightText, styles.font12]}>单据日期: </Text>
+                                <ListText style={[styles.lightText, styles.font12]} yigoid="BillDate" />
+                                <MoneyWithCurrency
+                                    currencyField={
+                                        <SplitText emptyStr="" format={Util.currencyCodeToSign} style={styles.currency} yigoid="CurrencyID" />
+                                    }
+                                    // moneyField="ReimbursementAmount"
+                                    moneyField={
+                                        <ListText style={[styles.bigMoney, styles.lightText]} yigoid="ActualPaymentAmount" emptyStr="0" />
+                                    }
+                                    containerStyle={styles.currentMain}
+                                    moneyStyle={[styles.bigMoney, styles.lightText]} />
                             </View>
-                            <Text style={[styles.moneyLabel, styles.lightText]}>实际付款金额</Text>
-                        </View>
-                    </Card>
-                    <Card style={[styles.firstCard, { overflow: 'visible' }]} bookmark="Status">
-                        <CellLayoutTemplate
-                            getLayout={this.getLayout}
-                            // layoutStyles={styles.layoutStyle}
-                            contentAlign='left'
-                            contentLayoutStyle={{ flexBasis: 'auto' }}
-                            contentTextStyle={styles.celllayoutText}
-                            items={[
-                                {
-                                    key: "ReimbursementPersonID",
-                                    textStyle: {
-                                        fontSize: 16,
-                                    }
-                                },
-                                {
-                                    type: 'element',
-                                    elementType: 'Seperator',
-                                    elementProps: {}
-                                },
-                                {
-                                    key: "PaymentDeptID",
-                                    textStyle: {
-                                        fontSize: 20,
-                                        color: '#3B87CF',
+                            <View style={[styles.row, { alignItems: 'flex-end' }]}>
+                                <View style={{ flex: 1 }}>
+                                    <Text style={[styles.lightText, styles.font12]}>单据编号:</Text>
+                                    <ListText emptyStr="" style={[styles.lightText, styles.font12, { paddingTop: 5 }]} yigoid="NO" />
+                                </View>
+                                <Text style={[styles.moneyLabel, styles.lightText]}>实际付款金额</Text>
+                            </View>
+                        </Card>
+                        <Card style={[styles.firstCard, { overflow: 'visible' }]} bookmark="Status">
+                            <CellLayoutTemplate
+                                getLayout={this.getLayout}
+                                // layoutStyles={styles.layoutStyle}
+                                contentAlign='left'
+                                contentLayoutStyle={{ flexBasis: 'auto' }}
+                                contentTextStyle={styles.celllayoutText}
+                                items={[
+                                    {
+                                        key: "ReimbursementPersonID",
+                                        textStyle: {
+                                            fontSize: 16,
+                                        }
                                     },
-                                    arrow: true,
-                                },
-                                {
-                                    key: "ReimbursementDeptID",
-                                    textStyle: {
-                                        fontSize: 16,
+                                    {
+                                        type: 'element',
+                                        elementType: 'Seperator',
+                                        elementProps: {}
                                     },
-                                    arrow: true,
-                                },
-                                {
-                                    key: "ReceivablesPersonID",
-                                    textStyle: {
-                                        fontSize: 16,
+                                    {
+                                        key: "PaymentDeptID",
+                                        textStyle: {
+                                            fontSize: 20,
+                                            color: '#3B87CF',
+                                        },
+                                        arrow: true,
                                     },
-                                    arrow: true
-                                },
-                                {
-                                    key: "IsManyBX",
-                                },
-                                {
-                                    key: "PaymentMethod",
-                                    textStyle: {
-                                        fontSize: 16,
+                                    {
+                                        key: "ReimbursementDeptID",
+                                        textStyle: {
+                                            fontSize: 16,
+                                        },
+                                        arrow: true,
                                     },
-                                    arrow: true
-                                },
-                                {
-                                    key: "AttachmentsNumber",
-                                    textStyle: {
-                                        fontSize: 16,
+                                    {
+                                        key: "ReceivablesPersonID",
+                                        textStyle: {
+                                            fontSize: 16,
+                                        },
+                                        arrow: true
+                                    },
+                                    {
+                                        key: "IsManyBX",
+                                    },
+                                    {
+                                        key: "PaymentMethod",
+                                        textStyle: {
+                                            fontSize: 16,
+                                        },
+                                        arrow: true
+                                    },
+                                    {
+                                        key: "AttachmentsNumber",
+                                        textStyle: {
+                                            fontSize: 16,
+                                        }
+                                    },
+                                    {
+                                        key: "Cause",
+                                        textStyle: {
+                                            fontSize: 15,
+                                            color: '#3B87CF',
+                                        }
+                                    },
+                                    {
+                                        key: "StandardMessage",
+                                        textStyle: {
+                                            fontSize: 16,
+                                        }
                                     }
-                                },
-                                {
-                                    key: "Cause",
-                                    textStyle: {
-                                        fontSize: 15,
-                                        color: '#3B87CF',
-                                    }
-                                },
-                                {
-                                    key: "StandardMessage",
-                                    textStyle: {
-                                        fontSize: 16,
-                                    }
+                                ]} />
+                        </Card>
+                        <VisibleRelated yigoid="GridLayoutPanel1">
+                            <Card
+                                style={styles.firstCard}
+                                title="关联申请单"
+                                yigoid="Button1"
+                                headIcon={
+                                    <XieinIcon name="icon-chuchashenqingdan" color="#F48520" size={20} />
                                 }
-                            ]} />
-                    </Card>
-                    <VisibleRelated yigoid="GridLayoutPanel1">
+                                collapseable={false}
+                                extra={
+                                    <ListText style={styles.cardTitleExtra} yigoid="ApplicationDate" emptyStr="" />
+                                }
+                            >
+                                <View style={styles.cardline}>
+                                    <Text style={{ fontSize: 13, fontWeight: 'bold' }}>出差事由: </Text>
+                                    <ListText style={{ color: '#666666', paddingLeft: 8 }} yigoid="ApplicationExplain" emptyStr="" />
+                                </View>
+                            </Card>
+                        </VisibleRelated>
                         <Card
                             style={styles.firstCard}
-                            title="关联申请单"
-                            yigoid="Button1"
+                            title="账本明细"
+                            headIcon={
+                                <XieinIcon name="icon-chuchashenqingdan" color="#2FC6A3" size={20} />
+                            }
+                            collapseable={true}
+                            extra={
+                                <GridSummary
+                                    style={styles.cardTitleExtra}
+                                    sumField="Amount_D"
+                                    text="账本,报销总金额"
+                                    textStyle={{ color: "#2FC6A3" }}
+                                    yigoid="detail" />
+                            }
+                        >
+                            <GridView
+                                yigoid="detail"
+                                {...detailMeta}
+                            />
+                        </Card>
+                        <Card
+                            style={styles.firstCard}
+                            title="关联借款单"
+                            yigoid="Button4"
                             headIcon={
                                 <XieinIcon name="icon-chuchashenqingdan" color="#F48520" size={20} />
                             }
                             collapseable={false}
                             extra={
-                                <ListText style={styles.cardTitleExtra} yigoid="ApplicationDate" emptyStr="" />
+                                <GridSummary
+                                    style={styles.cardTitleExtra}
+                                    sumField="ReversalAmount"
+                                    text="借款单,核销总金额"
+                                    yigoid="Grid2" />
                             }
                         >
-                            <View style={styles.cardline}>
-                                <Text style={{ fontSize: 13, fontWeight: 'bold' }}>出差事由: </Text>
-                                <ListText style={{ color: '#666666', paddingLeft: 8 }} yigoid="ApplicationExplain" emptyStr="" />
-                            </View>
+                            <GridView
+                                yigoid="Grid2"
+                                {...grid2Meta}
+                            />
                         </Card>
-                    </VisibleRelated>
-                    <Card
-                        style={styles.firstCard}
-                        title="账本明细"
-                        headIcon={
-                            <XieinIcon name="icon-chuchashenqingdan" color="#2FC6A3" size={20} />
-                        }
-                        collapseable={true}
-                        extra={
-                            <GridSummary
-                                style={styles.cardTitleExtra}
-                                sumField="Amount_D"
-                                text="账本,报销总金额"
-                                textStyle={{ color: "#2FC6A3" }}
-                                yigoid="detail" />
-                        }
-                    >
-                        <GridView
-                            yigoid="detail"
-                            {...detailMeta}
-                        />
-                    </Card>
-                    <Card
-                        style={styles.firstCard}
-                        title="关联借款单"
-                        yigoid="Button4"
-                        headIcon={
-                            <XieinIcon name="icon-chuchashenqingdan" color="#F48520" size={20} />
-                        }
-                        collapseable={false}
-                        extra={
-                            <GridSummary
-                                style={styles.cardTitleExtra}
-                                sumField="ReversalAmount"
-                                text="借款单,核销总金额"
-                                yigoid="Grid2" />
-                        }
-                    >
-                        <GridView
-                            yigoid="Grid2"
-                            {...grid2Meta}
-                        />
-                    </Card>
-                    <AttachmentList style={[styles.card]} yigoid="AttachmentGrid" fileName="UploadName" filePath="Path" removable title="附件" />
-                </AutofitScrollView>
+                        <AttachmentList style={[styles.card]} yigoid="AttachmentGrid" fileName="UploadName" filePath="Path" removable title="附件" />
+                    </AutofitScrollView>
+                </View>
                 {
                     actionButton
                 }
