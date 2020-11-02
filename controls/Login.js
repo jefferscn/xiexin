@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
     },
     text: {
-        paddingLeft: 10,
+        paddingRight: 10,
         color: 'gray',
     }
 });
