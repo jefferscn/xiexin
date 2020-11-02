@@ -234,7 +234,7 @@ const formExt = {
                 await this.eval(onLoad, cxt);
             }
             if(loadScript && this.type !== YIUI.Form_Type.Entity) {
-                await this.eval(onLoad, cxt);
+                await this.eval(loadScript, cxt);
             }
             getDispatcher().dispatch({
                 type: 'STOPEVENT',
