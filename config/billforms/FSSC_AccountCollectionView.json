@@ -40,6 +40,12 @@
                             "status": "NEW"
                         },
                         {
+                            "formKey": "FSSC_ExpenseAccountBillBG",
+                            "oid": "new",
+                            "text": "出差变更",
+                            "status": "NEW"
+                        },
+                        {
                             "formKey": "FSSC_Entertainsapply",
                             "oid": "new",
                             "text": "招待申请",

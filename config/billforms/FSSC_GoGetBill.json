@@ -1,0 +1,32 @@
+{
+    "formTemplate": "modal",
+    "content": {
+        "type": "element",
+        "elementType": "GridView",
+        "elementProps": {
+            "yigoid": "Grid1",
+            "showHead": true,
+            "removeable": false,
+            "headTitle": "选择申请单",
+            "useBodyScroll": true,
+            "hideAction": true,
+            "clickMode": "dblclick",
+            "primaryKey": "BillNO",
+            "secondKey": [
+                "StartDate",
+                {
+                    "type": "element",
+                    "elementType": "AwesomeFontIcon",
+                    "elementProps": {
+                        "name": "arrow-right"
+                    }
+                },
+                "EndDate"
+            ]
+        }
+    },
+    "popup": true,
+    "maskClosable": true,
+    "actions": [
+    ]
+}

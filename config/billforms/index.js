@@ -48,12 +48,16 @@ import FSSC_AccountCollectionView from './FSSC_AccountCollectionView.json';
 import FSSC_FuzhouuanceBooks from './FSSC_FuzhouuanceBooks';
 import FSSC_Entertainsapply from './FSSC_Entertainsapply';
 import FSSC_GETAPPLY from './FSSC_GETAPPLY.json';
+import FSSC_ExpenseAccountBillBG from './FSSC_ExpenseAccountBillBG';
+import FSSC_GoGetBill from './FSSC_GoGetBill.json';
 //
 export default {
     default: defaultForm,
     FSSC_FuzhouuanceBooks,
     FSSC_Entertainsapply,
     FSSC_GETAPPLY_modal: FSSC_GETAPPLY,
+    FSSC_ExpenseAccountBillBG,
+    FSSC_GoGetBill_modal: FSSC_GoGetBill,
     FSSC_ExpenseAccountBillView,
     FSSC_ExpenseAccountBill,
     FSSC_BooksQuery,
