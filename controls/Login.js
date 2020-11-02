@@ -56,8 +56,9 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     button: {
-        borderRadius: 20,
-        margin: 20,
+        borderRadius: 10,
+        marginTop: 20,
+        marginBottom: 20,
         overflow: 'hidden',
     },
     sysText: {
@@ -75,6 +76,7 @@ const styles = StyleSheet.create({
     },
     text: {
         paddingLeft: 10,
+        color: 'gray',
     }
 });
 if (Platform.OS === 'web') {
@@ -229,13 +231,13 @@ class Login extends Component {
                                 >登录</Button>
                             </View>
                             <View style={styles.row} >
+                                <Text style={styles.text}>保存密码</Text>
                                 <Switch
                                     value={this.state.savePassword}
                                     activeThumbColor={'#2196f3'}
                                     activeTrackColor={'#79c3fd'}
                                     thumbColor={'gray'}
                                     onValueChange={this.onSavePasswordChange} />
-                                <Text>保存密码</Text>
                             </View>
                         </View>
                     </View>
