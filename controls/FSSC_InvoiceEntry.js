@@ -125,13 +125,13 @@ export default class InvoiceEntry extends PureComponent {
                 files = await this.context.getPicture(0, 60, 1000, true);
             } catch (ex) {
                 console.log(ex);
-                if (ex !== 'usercancel') {
-                    Util.alert('错误', ex.messsage);
-                }
                 this.setState({
                     step: 1,
                     modalVisible: true,
                 });
+                if (ex !== 'usercancel') {
+                    Util.alert('错误', ex.messsage || ex);
+                }
                 return;
             }
             // const file = await this.context.getPicture(0, 60, 1000);
