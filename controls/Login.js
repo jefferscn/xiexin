@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, View, TextInput, Text, Image, Button, ImageBackground, Switch } from 'react-native';
+import { Platform, StyleSheet, View, TextInput, 
+    Text, Image, Button, ImageBackground, Switch,
+    TouchableOpacity } from 'react-native';
 import { LoginWrap as loginWrap } from 'yes'; // eslint-disable-line
 import Icon from 'react-native-vector-icons/FontAwesome';
 import LoginBG from '../res/login_bg.png';
@@ -12,7 +14,9 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: '#8a8a8a',
         marginBottom: 20,
-        paddingLeft: 50,
+        paddingLeft: 40,
+        paddingRight: 40,
+        fontSize: 17,
     },
     main: {
         flexDirection: 'column',
@@ -42,11 +46,26 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         boxShadow: '0 5px 5px #888888',
     },
+    iconLeft: {
+        position: 'absolute',
+        width: 40,
+        height: 40,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    iconRight: {
+        position: 'absolute',
+        width: 40,
+        height: 40,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        right: 0,
+    },
     icon: {
         position: 'absolute',
         fontSize: 20,
-        left: 12,
-        top: 10,
         color: 'skyblue',
     },
     loginText: {
@@ -95,6 +114,7 @@ class Login extends Component {
             passwordTextInputBottomBorderColor: '#8a8a8a',
             loginType: 'userAccount',
             savePassword: false,
+            showPassword: false,
         };
         this.handleUserChange = this.handleUserChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
@@ -156,6 +176,11 @@ class Login extends Component {
             localStorage.setItem(util.getProjectKey("password"), '');
         }
     }
+    toggleShowPassword = ()=> {
+        this.setState({
+            showPassword: !this.state.showPassword,
+        });
+    }
     componentDidMount() {
         const user = localStorage.getItem(util.getProjectKey("user"));
         const savePassword = localStorage.getItem(util.getProjectKey("savePassword"));
@@ -205,13 +230,15 @@ class Login extends Component {
                                     onBlur={this.onUserBlur}
                                     underlineColorAndroid="transparent"
                                 />
-                                <Icon name="user-circle" style={styles.icon} />
+                                <View style={styles.iconLeft}>
+                                    <Icon name="user-circle" style={styles.icon} />
+                                </View>
                             </View>
                             <View>
                                 <TextInput
                                     value={this.state.password}
-                                    secureTextEntry
-                                    keyboardType="numeric"
+                                    secureTextEntry={this.state.showPassword?false:true}
+                                    keyboardType="default"
                                     style={passwordTextInputStyle}
                                     placeholder="密码"
                                     onChangeText={this.handlePasswordChange}
@@ -219,7 +246,12 @@ class Login extends Component {
                                     onBlur={this.onPasswordBlur}
                                     underlineColorAndroid="transparent"
                                 />
-                                <Icon name="lock" style={styles.icon} />
+                                <View style={styles.iconLeft}>
+                                    <Icon name="lock" style={styles.icon} />
+                                </View>
+                                <TouchableOpacity style={styles.iconRight} onPress={this.toggleShowPassword}>
+                                    <Icon name={this.state.showPassword?"eye":"eye-slash"} style={styles.icon} />
+                                </TouchableOpacity>
                             </View>
                             <View style={styles.button}>
                                 <Button
@@ -231,7 +263,7 @@ class Login extends Component {
                                 >登录</Button>
                             </View>
                             <View style={styles.row} >
-                                <Text style={styles.text}>保存密码</Text>
+                                <Text style={styles.text}>记住密码</Text>
                                 <Switch
                                     value={this.state.savePassword}
                                     activeThumbColor={'#2196f3'}
