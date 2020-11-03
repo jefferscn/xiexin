@@ -162,8 +162,8 @@ class Login extends Component {
         if (savePassword) {
             const password = localStorage.getItem(util.getProjectKey("password"));
             this.setState({
-                user,
-                password,
+                user: user || '',
+                password: password || '',
                 savePassword: !!savePassword,
             });
             return;

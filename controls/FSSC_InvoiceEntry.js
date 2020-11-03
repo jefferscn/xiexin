@@ -44,6 +44,7 @@ const script = 'PushPara("resource", 1); Open(Macro_GetBillKeyByInvoiceType(cell
 export default class InvoiceEntry extends PureComponent {
     static contextTypes = {
         getPicture: PropTypes.func,
+        getPictures: PropTypes.func,
         getBillForm: PropTypes.func,
         uploadImage: PropTypes.func,
         onValueChange: PropTypes.func,
@@ -108,7 +109,7 @@ export default class InvoiceEntry extends PureComponent {
         });
         this.setState({
             selectType: v,
-        })
+        });
         if (v == 2) {//picture
             const billform = this.context.getBillForm();
             if (!billform) {
@@ -119,9 +120,9 @@ export default class InvoiceEntry extends PureComponent {
             this.setState({
                 modalVisible: false,
             });
-            let file = null;
+            let files = null;
             try {
-                file = await this.context.getPicture(0, 60, 1000);
+                files = await this.context.getPicture(0, 60, 1000, true);
             } catch (ex) {
                 console.log(ex);
                 if (ex !== 'usercancel') {
@@ -136,19 +137,20 @@ export default class InvoiceEntry extends PureComponent {
             // const file = await this.context.getPicture(0, 60, 1000);
             Util.safeExec(async () => {
                 try {
-                    console.log(file);
-                    const result = await this.context.uploadImage(formKey, oid, file.file, file.name);
+                    for (let file of files) {
+                        const result = await this.context.uploadImage(formKey, oid, file.file, file.name);
+                        await this.context.onValueChange("HeadPath", result);
+                        await this.context.onControlClick("InvoiceIndentity");
+                    }
                     this.setState({
                         step: 2,
                     });
-                    await this.context.onValueChange("HeadPath", result);
-                    await this.context.onControlClick("InvoiceIndentity");
                 } catch (ex) {
-                    Util.alert('错误', ex.message);
                     this.setState({
                         step: 1,
                         modalVisible: true,
                     });
+                    Util.alert('错误', ex.message);
                 }
             })
         }
