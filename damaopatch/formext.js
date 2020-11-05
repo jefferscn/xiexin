@@ -233,7 +233,7 @@ const formExt = {
             if (onLoad) {
                 await this.eval(onLoad, cxt);
             }
-            if(loadScript && this.type !== YIUI.Form_Type.Entity) {
+            if(loadScript && (this.type !== YIUI.Form_Type.Entity) && (this.metaForm.initState === YIUI.Form_OperationState.Default)) {
                 await this.eval(loadScript, cxt);
             }
             getDispatcher().dispatch({
