@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, View, TextInput, 
     Text, Image, Button, ImageBackground, Switch,
-    TouchableOpacity } from 'react-native';
+    TouchableOpacity, ActivityIndicator } from 'react-native';
 import { LoginWrap as loginWrap } from 'yes'; // eslint-disable-line
 import Icon from 'react-native-vector-icons/FontAwesome';
 import LoginBG from '../res/login_bg.png';
@@ -110,6 +110,7 @@ class Login extends Component {
             user: '',
             password: '',
             corp: '000',
+            logining: false,
             userTextInputBottomBorderColor: '#8a8a8a',
             passwordTextInputBottomBorderColor: '#8a8a8a',
             loginType: 'userAccount',
@@ -154,13 +155,25 @@ class Login extends Component {
             localStorage.setItem(util.getProjectKey("password"), v);
         }
     }
-    handleClickLogin() {
-        this.props.handleClickLogin(
+    async handleClickLogin() {
+        if(this.state.logining) {
+            return;
+        }
+        this.setState({
+            logining: true,
+        });
+        try{
+        await this.props.handleClickLogin(
             `${this.state.corp}_${this.state.user}`,
             this.state.password,
             {
                 OrgCode: this.state.corp,
             });
+        }finally {
+            this.setState({
+                logining: false,
+            });
+        }
     }
     changeLoginType = (loginType) => {
         this.setState({
@@ -258,9 +271,9 @@ class Login extends Component {
                                     raised
                                     primary
                                     style={styles.button}
-                                    title="登录"
+                                    title={!this.state.logining?'登录':<ActivityIndicator />}
                                     onPress={this.handleClickLogin}
-                                >登录</Button>
+                                />
                             </View>
                             <View style={styles.row} >
                                 <Text style={styles.text}>记住密码</Text>
