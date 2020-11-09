@@ -604,6 +604,25 @@ export default class HospitalityReimbursement extends PureComponent {
                                 </View>
                             </Card>
                         </VisibleRelated>
+                        <VisibleRelated yigoid="GridLayoutPanel5">
+                            <Card
+                                style={styles.firstCard}
+                                title="关联申请单"
+                                yigoid="Button5"
+                                headIcon={
+                                    <XieinIcon name="icon-chuchashenqingdan" color="#F48520" size={20} />
+                                }
+                                collapseable={false}
+                                extra={
+                                    <ListText style={styles.cardTitleExtra} yigoid="EntertainsapplyDate" emptyStr="" />
+                                }
+                            >
+                                <View style={styles.cardline}>
+                                    <Text style={{ fontSize: 13, fontWeight: 'bold' }}>事由: </Text>
+                                    <ListText style={{ color: '#666666', paddingLeft: 8 }} yigoid="EntertainsapplyCause" emptyStr="" />
+                                </View>
+                            </Card>
+                        </VisibleRelated>
                         <Card
                             style={styles.firstCard}
                             title="账本明细"
