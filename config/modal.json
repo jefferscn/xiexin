@@ -46,5 +46,6 @@
     "FSSC_SecondhandCarSaleInvoice_View",
     "FSSC_PersonBusTicketInvoice_View",
     "FSSC_ShipTicketInvoice_View",
-    "FSSC_TollInvoice_View"
+    "FSSC_TollInvoice_View",
+    "ProjectEapWorkFlowAuditOpinion"
 ]

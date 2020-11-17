@@ -43,6 +43,7 @@ import FSSC_VATinvoice_View from './FSSC_VATinvoice_View';
 import FSSC_TaxiInvoice_View from './FSSC_TaxiInvoice_View';
 import FSSC_AirTicketInvoice_View from './FSSC_AirTicketInvoice_View';
 import FSSC_AccountCollectionView from './FSSC_AccountCollectionView.json';
+import ProjectEapWorkFlowAuditOpinion from './ProjectEapWorkFlowAuditOpinion';
 
 //JMRH
 import FSSC_FuzhouuanceBooks from './FSSC_FuzhouuanceBooks';
@@ -119,4 +120,5 @@ export default {
     FSSC_AirTicketInvoice_View,
     FSSC_ShipTicketInvoice_View: FSSC_VATinvoice_View,
     FSSC_AccountCollectionView,
+    ProjectEapWorkFlowAuditOpinion_modal: ProjectEapWorkFlowAuditOpinion,
 };

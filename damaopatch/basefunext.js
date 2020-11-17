@@ -924,11 +924,12 @@ const BaseFunsExt = (function () {
     };
     funs.UIClose = View.FuncMap.get('Close');
 
-    funs.UICloseDoNothing = async function (name, cxt, args) {
-        const form = cxt.form;
-        await form.unLock();
-        form.close();
-    };
+    // funs.UICloseDoNothing = async function (name, cxt, args) {
+    //     const form = cxt.form;
+    //     await form.unLock();
+    //     form.close();
+    // };
+    funs.UICloseDoNothing = funs.UIClose;
 
     funs.DateLong = function () {
         let date = new Date();
