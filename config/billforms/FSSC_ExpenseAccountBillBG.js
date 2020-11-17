@@ -343,8 +343,8 @@ export default {
                             "elementProps": {
                                 icon: "plus",
                                 style: {
-                                    // flex: 1,
-                                    width: 50,
+                                    width: 24,
+                                    fontSize: 16,
                                 },
                                 iconStyle: {
                                     color: 'rgb(33, 150, 243)',

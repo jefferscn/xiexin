@@ -50,9 +50,11 @@ import FSSC_Entertainsapply from './FSSC_Entertainsapply';
 import FSSC_GETAPPLY from './FSSC_GETAPPLY.json';
 import FSSC_ExpenseAccountBillBG from './FSSC_ExpenseAccountBillBG';
 import FSSC_GoGetBill from './FSSC_GoGetBill.json';
+import FSSC_ApplyChange from './FSSC_ApplyChange';
 //
 export default {
     default: defaultForm,
+    FSSC_ApplyChange,
     FSSC_FuzhouuanceBooks,
     FSSC_Entertainsapply,
     FSSC_GETAPPLY_modal: FSSC_GETAPPLY,

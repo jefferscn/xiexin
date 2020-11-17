@@ -40,14 +40,35 @@ export default {
             "type": "element",
             "elementType": "Card",
             "elementProps": {
-                style: {
-                    paddingTop: 10,
-                },
+                "collapseable": false,
+                "headIcon": "",
+                "title": "关联申请单",
+                "yigoid": "Button1",
+                "expanded": true,
                 "content": {
                     "type": "element",
                     "elementType": "CellLayoutTemplate",
                     "elementProps": {
-                        items: ['Amount','Explain']
+                        "textStyle": {
+                            "textAlign": "right",
+                            "justifyContent": "flex-end"
+                        },
+                        "titleStyle": {
+                            "justifyContent": "flex-start",
+                            "fontSize": "15",
+                            "color": "#666666"
+                        },
+                        "layoutStyle": {
+                            "justifyContent": "flex-end"
+                        },
+                        "items": [
+                            "ApplyCode",
+                            "CompanyCodeID",
+                            "PersonnelID",
+                            "ApplyOrgID",
+                            "Amount",
+                            "ApplyDaptID"
+                        ]
                     }
                 }
             }
@@ -56,14 +77,15 @@ export default {
             "type": "element",
             "elementType": "Card",
             "elementProps": {
-                style: {
-                    paddingTop: 10,
-                },
+                "collapseable": false,
+                "headIcon": "",
+                "title": "可变更内容",
+                "expanded": true,
                 "content": {
                     "type": "element",
                     "elementType": "CellLayoutTemplate",
                     "elementProps": {
-                        items: ['ReceptionType','ReceptionTime', 'ReceptionMan','HandDept','ReceptionName','ReceptionPhone']
+                        items: ['Currency','UndertakeDeptID','ReceptionType1','ReceptionTime1', 'ReceptionMan1','ReceptionName1','ReceptionPhone1', 'Explain']
                     }
                 }
             }
