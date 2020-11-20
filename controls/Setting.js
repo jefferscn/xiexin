@@ -6,6 +6,7 @@ import { AppDispatcher } from 'yes-intf';
 import AppStatusWrap from 'yes-framework/controls/AppStatusWrap';
 import { History } from 'yes-web';
 import Update from 'yes-framework/controls/Update';
+import { openForm } from 'yes-framework/util/navigateUtil';
 
 const Item = List.Item;
 const styles = StyleSheet.create({
@@ -45,6 +46,9 @@ export default class Setting extends PureComponent {
             type: 'XIEXINLOGOUT',
         });
     }
+    changePassword = ()=> {
+        openForm('ChangePassWord', -1, 'EDIT');
+    }
     render() {
         return (
             <View style={styles.page}>
@@ -57,6 +61,9 @@ export default class Setting extends PureComponent {
                         <VersionCheckItem 
                             title="检测更新"
                         />
+                        <Item arrow="horizontal" onClick={this.changePassword}>
+                            修改密码
+                        </Item>
                     </List>
                 </View>
                 <Button
