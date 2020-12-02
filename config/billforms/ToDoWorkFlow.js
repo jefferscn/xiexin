@@ -4,6 +4,9 @@ export default {
         "type": "button",
         "buttonId": "Button1"
     },
+    contentStyle: {
+        backgroundColor: '#F8F8F8'
+    },
     "head": {
         "type": "element",
         "elementType": "Header",
@@ -91,7 +94,17 @@ export default {
                 "height": 45
             },
             "hasMore": false,
-            "queryButton": "Query"
+            "queryButton": "Button1"
+        }
+    },
+    "foot": {
+        "type": "element",
+        "elementType": "GridBatchOperate",
+        "elementProps": {
+            "yigoid": "Grid1",
+            "optKey": "BatchAudit",
+            "autoHide": true,
+            "title": "审批"
         }
     },
     "list": {
@@ -100,60 +113,83 @@ export default {
         "elementProps": {
             "yigoid": "Grid1",
             "hideAction": true,
-            "primaryKey": "FormName",
             "removeable": false,
-            "clickMode": "dblclick",
-            "secondKey": [
-                "Cause"
-            ],
-            "style": {
-                "marginLeft": 12,
-                "flex": 1
-            },
-            "tertiaryKey": [
-                {
-                    "type": "element",
-                    "elementType": "ListText",
-                    "elementProps": {
-                        "yigoid": "NO",
-                        "template": "单据编号:${displayValue}"
-                    }
-                }
-            ],
-            "leftElement": {
+            "clickMode": 'dblclick',
+            "RowElement": {
                 "type": "element",
-                "elementType": "BooksTypeImage",
+                "elementType": "GridRow",
                 "elementProps": {
-                    yigoid: "formkey",
-                    style: {
-                        paddingRight: 12,
-                        alignItems: 'center',
-                        justifyContent: 'center'
-                    }
-                }
-            },
-            "rightElement": {
-                "type": "element",
-                "elementType": "FlexBox",
-                "elementProps": {
-                    "direction": "column",
-                    "style": {
-                        "justifyContent": "space-between",
-                        "paddingRight": 8,
-                        "marginLeft": 8
+                    "showSeperator": true,
+                    seperatorStyle: {
+                        height: 8,
+                        backgroundColor: '#F8F8F8',
                     },
-                    "items": [
+                    headStyle: {
+                        height: 40,
+                    },
+                    "headLeft": [
                         {
                             "type": "element",
-                            "elementType": "SplitText",
+                            "elementType": "GridSelect",
                             "elementProps": {
-                                "yigoid": "FinishTime",
-                                "style": {
-                                    "fontSize": 12,
-                                    "textAlign": "right"
-                                }
+                                yigoid: "isSelect",
+                                onlyShow: false,
+                                size: 22,
                             }
                         },
+                        {
+                            "type": "element",
+                            "elementType": "BooksTypeImage",
+                            "elementProps": {
+                                yigoid: "formkey"
+                            }
+                        },
+                        {
+                            "type": "element",
+                            "elementType": "Text",
+                            "elementProps": {
+                                yigoid: "FormName"
+                            }
+                        }
+                    ],
+                    "headRight": [{
+                        "type": "element",
+                        "elementType": "ListText",
+                        "elementProps": {
+                            yigoid: "BillTime"
+                        }
+                    }],
+                    "content":
+                    {
+                        "type": "element",
+                        "elementType": "ControlList",
+                        "elementProps": {
+                            template: '${caption}:${displayValue}',
+                            style:{
+                                paddingLeft: 12
+                            },
+                            items: [
+                                "Dept",
+                                "Creator",
+                                "Cause",
+                                // {
+                                //     "type": "element",
+                                //     "elementType": "ListText",
+                                //     "elementProps": {
+                                //         yigoid: 'Creator'
+                                //     }
+                                // },
+                                // {
+                                //     "type": "element",
+                                //     "elementType": "ListText",
+                                //     "elementProps": {
+                                //         yigoid: 'Cause'
+                                //     }
+                                // },
+                            ]
+                        }
+                    },
+                    "footLeft": [
                         {
                             "type": "element",
                             "elementType": "MoneyWithCurrency",
@@ -161,10 +197,6 @@ export default {
                                 moneyField: 'Money',
                                 currencyField: 'Currency',
                                 showCurrencySign: true,
-                                containerStyle: {
-                                    paddingRight: 0,
-                                    justifyContent: 'flex-end',
-                                },
                                 currencyStyle: {
                                     color: '#F4333C',
                                     fontSize: 16,
@@ -175,11 +207,23 @@ export default {
                                 }
                             }
                         }
+                    ],
+                    "footRight": [
                     ]
                 }
-            }
+            },
+            "style": {
+                "marginLeft": 12,
+                "marginTop": 12,
+                "marginRight": 12,
+                "flex": 1,
+            },
         }
     },
     "controls": {
+        "SaGrade": {
+            "control": "Rating",
+            "visible": true
+        }
     }
 }

@@ -45,6 +45,8 @@ import FSSC_AirTicketInvoice_View from './FSSC_AirTicketInvoice_View';
 import FSSC_AccountCollectionView from './FSSC_AccountCollectionView.json';
 import ProjectEapWorkFlowAuditOpinion from './ProjectEapWorkFlowAuditOpinion';
 import ChangePassWord from './ChangePassWord';
+import ToDoWorkFlow from './ToDoWorkFlow';
+import CompleteWorkFlow from './CompleteWorkFlow';
 
 export default {
     default: defaultForm,
@@ -109,4 +111,6 @@ export default {
     FSSC_AccountCollectionView,
     ProjectEapWorkFlowAuditOpinion_modal: ProjectEapWorkFlowAuditOpinion,
     ChangePassWord,
+    ToDoWorkFlow,
+    CompleteWorkFlow,
 };
