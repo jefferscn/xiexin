@@ -36,9 +36,9 @@ const detailMeta = {
     ],
     headExtra: {
         "type": "element",
-        "elementType": "GridAddRow",
+        "elementType": "DictSelect",
         "elementProps": {
-            yigoid: "detail",
+            yigoid: "TravelersSelect",
             children: {
                 "type": "element",
                 "elementType": "IconButton",
