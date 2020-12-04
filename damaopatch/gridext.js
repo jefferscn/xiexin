@@ -187,7 +187,7 @@ YIUI.Grid.prototype.appendEmptyRowValue = function (form, tableKey, fieldKey, va
     form.getDocument().emptyGridRowValues[tableKey][fieldKey] = value;
 };
 
-YIUI.Grid.prototype.doOnCellClick = function (rowIndex, columnKey) {
+YIUI.Grid.prototype.doOnCellClick = async function (rowIndex, columnKey) {
     const form = YIUI.FormStack.getForm(this.ofFormID);
     const colEditor = this.getColumnEditor(columnKey);
 
@@ -201,7 +201,7 @@ YIUI.Grid.prototype.doOnCellClick = function (rowIndex, columnKey) {
                 cxt.setGrid(this);
                 cxt.setRowIndex(rowIndex);
                 this.activeRowIndex = rowIndex;
-                form.eval($.trim(colEditor.onClick), cxt, null);
+                await form.eval($.trim(colEditor.onClick), cxt, null);
             }
             break;
     }

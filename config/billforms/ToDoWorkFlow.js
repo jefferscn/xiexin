@@ -103,7 +103,8 @@ export default {
         "elementProps": {
             "yigoid": "Grid1",
             "optKey": "BatchAudit",
-            "autoHide": true,
+            "autoHide": false,
+            "supportSelectAll": true,
             "title": "审批"
         }
     },
@@ -126,6 +127,10 @@ export default {
                     },
                     headStyle: {
                         height: 40,
+                    },
+                    footStyle: {
+                        borderTopWidth: 1,
+                        borderTopColor: 'lightgrey'
                     },
                     "headLeft": [
                         {
@@ -165,7 +170,7 @@ export default {
                         "elementType": "ControlList",
                         "elementProps": {
                             template: '${caption}:${displayValue}',
-                            style:{
+                            style: {
                                 paddingLeft: 12
                             },
                             items: [
@@ -209,6 +214,22 @@ export default {
                         }
                     ],
                     "footRight": [
+                        {
+                            "type": "element",
+                            "elementType": "SegementButtons",
+                            "elementProps": {
+                                containerStyle: {
+                                    width: 120,
+                                },
+                                items: [{
+                                    key: 'RevokeButton',
+                                    text: '驳回'
+                                }, {
+                                    key: 'CommitButton',
+                                    text: '同意'
+                                }]
+                            }
+                        }
                     ]
                 }
             },
