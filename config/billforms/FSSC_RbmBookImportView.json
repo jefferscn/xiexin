@@ -92,6 +92,8 @@
     },
     "popup": true,
     "maskClosable": true,
+    "drawer": true,
+    "animationType": "drawer",
     "actions": [
         {
             "text": "导入",

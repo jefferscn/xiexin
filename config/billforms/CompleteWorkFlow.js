@@ -2,7 +2,7 @@ export default {
     "formTemplate": "list",
     "refresh": {
         "type": "button",
-        "buttonId": "Query"
+        "buttonId": "Button1"
     },
     "head": {
         "type": "element",
@@ -94,51 +94,29 @@ export default {
             "queryButton": "Query"
         }
     },
-    "action": {
-        "type": "element",
-        "elementType": "OpenFormActionButton",
-        "elementProps": {
-            "formKey": "FSSC_BooksCreate",
-            "modal": true,
-            "oid": "-1",
-            "style": {
-                "right": "50%",
-                "transform": "translateX(30px)"
-            }
-        }
-    },
     "list": {
         "type": "element",
         "elementType": "GridView",
         "elementProps": {
             "yigoid": "Grid1",
             "hideAction": true,
-            "primaryKey": "BooksNO",
-            "clickMode": "button",
-            "clickYigoId": "BooksNO",
+            "primaryKey": "FormName",
             "removeable": false,
+            "clickMode": "dblclick",
             "secondKey": [
-                "DeptID2"
+                "Cause"
             ],
             "style": {
                 "marginLeft": 12,
                 "flex": 1
             },
             "tertiaryKey": [
-                "PersonnelID2",
                 {
                     "type": "element",
-                    "elementType": "CheckboxLabel",
+                    "elementType": "ListText",
                     "elementProps": {
-                        "yigoid": "isreimbursement",
-                        "trueLabel": "已报销",
-                        "style": {
-                            "color": "orangered",
-                            "fontSize": 12,
-                            "display": "flex",
-                            "alignItems": "center",
-                            "paddingLeft": 12
-                        }
+                        "yigoid": "NO",
+                        "template": "单据编号:${displayValue}"
                     }
                 }
             ],
@@ -146,10 +124,11 @@ export default {
                 "type": "element",
                 "elementType": "BooksTypeImage",
                 "elementProps": {
-                    "yigoid": "BooksType",
-                    "style": {
-                        "paddingRight": 8,
-                        "justifyContent": "center"
+                    yigoid: "formkey",
+                    style: {
+                        paddingRight: 12,
+                        alignItems: 'center',
+                        justifyContent: 'center'
                     }
                 }
             },
@@ -168,22 +147,31 @@ export default {
                             "type": "element",
                             "elementType": "SplitText",
                             "elementProps": {
-                                "yigoid": "BooksDate",
+                                "yigoid": "FinishTime",
                                 "style": {
                                     "fontSize": 12,
-                                    "paddingTop": 8,
                                     "textAlign": "right"
                                 }
                             }
                         },
                         {
                             "type": "element",
-                            "elementType": "ListText",
+                            "elementType": "MoneyWithCurrency",
                             "elementProps": {
-                                "yigoid": "TotalMoney",
-                                "style": {
-                                    "textAlign": "right",
-                                    "paddingBottom": 4
+                                moneyField: 'Money',
+                                currencyField: 'Currency',
+                                showCurrencySign: true,
+                                containerStyle: {
+                                    paddingRight: 0,
+                                    justifyContent: 'flex-end',
+                                },
+                                currencyStyle: {
+                                    color: '#F4333C',
+                                    fontSize: 16,
+                                },
+                                moneyStyle: {
+                                    color: '#F4333C',
+                                    fontSize: 16,
                                 }
                             }
                         }
@@ -193,9 +181,5 @@ export default {
         }
     },
     "controls": {
-        "SaGrade": {
-            "control": "Rating",
-            "visible": true
-        }
     }
 }

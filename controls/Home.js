@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import {
     View, StyleSheet, Text, ScrollView,
     TouchableHighlight, PanResponder, LayoutAnimation,
-    TouchableOpacity, Dimensions 
+    TouchableOpacity, Dimensions
 } from 'react-native';
 import IconFont from 'yes-framework/font';
 import { Modal, WhiteSpace } from 'antd-mobile';
@@ -27,6 +27,8 @@ import BillContainer from './BillContainer';
 import { Util } from 'yes-intf';
 import Global from 'global';
 import { GridChart } from 'yg-echarts';
+// import Icon from 'react-native-vector-icons/FontAwesome';
+import GridTotal from 'yes-framework/controls/GridTotal';
 
 const { ListText } = ListComponents;
 
@@ -118,7 +120,46 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: '50%',
         backgroundColor: 'cornflowerblue',
-    }
+    },
+    todolistview: {
+        backgroundColor: 'white',
+    },
+    todolistviewheader: {
+        height: 40,
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+        paddingLeft: 12,
+    },
+    todolistviewtitle: {
+        fontSize: 14,
+        fontWeight: 'bold',
+    },
+    todolistviewcontent: {
+        flexDirection: 'row',
+        height: 40,
+    },
+    todolistviewitem: {
+        flex: 1,
+        justifyContent: 'center',
+        paddingLeft: 12,
+    },
+    todolistviewitemcontent: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    todolistviewicon: {
+        color: '#2598F3',
+        fontSize: 20,
+        paddingRight: 6,
+    },
+    todolistviewitembadge: {
+        color: '#E02020',
+        fontSize: 21,
+    },
+    todolistviewitemtext: {
+        paddingRight: 6,
+        color: '#666666',
+    },
 });
 
 const openUrl = async (service) => {
@@ -585,7 +626,7 @@ class EntryList extends PureComponent {
             return;
         }
         if (entry.type === 'thirdpart') {
-            Util.safeExec(async ()=> {
+            Util.safeExec(async () => {
                 await openUrl(entry.service);
             });
             return;
@@ -638,27 +679,71 @@ class EntryList extends PureComponent {
     }
 };
 
+// class TodoList extends PureComponent {
+//     render() {
+//         return (<CustomBillForm formKey="ToDoListTotal" oid="-1" status="DEFAULT">
+//             <BillContainer>
+//                 <OperationExecTimer yigoid="flush" ticks={600000} />
+//                 <GridView
+//                     yigoid="Grid1"
+//                     showHead={false}
+//                     clickMode="dblclick"
+//                     useBodyScroll={true}
+//                     divider={true}
+//                     dividerStyle={{
+//                         borderBottomWidth: 10,
+//                         borderBottomColor: '#F7F7F7',
+//                     }}
+//                     primaryKey={<FlexBox direction="row" style={{flex: 1, paddingRight: 12, alignItems: 'center' }}>
+//                         <BooksTypeImage yigoid="formKey" style={{ paddingRight: 12 }} />
+//                         <ListText yigoid="formname" style={{ flex: 1 }} />
+//                         <BadgeText yigoid="C" />
+//                     </FlexBox>}
+//                 />
+//             </BillContainer>
+//         </CustomBillForm>);
+//     }
+// }
+
+const TodoCount = GridTotal(({ count, total, style }) => {
+    return <Text style={style}>{total}</Text>
+});
+const openTodoList = () => {
+    openForm('ToDoWorkFlow', -1, 'EDIT');
+}
+const openCompleteList = () => {
+    openForm('CompleteWorkFlow', -1, 'EDIT');
+}
+const TodoListView = () => {
+    return (
+        <View style={styles.todolistview}>
+            <View style={styles.todolistviewheader}>
+                <Text style={styles.todolistviewtitle}>审批任务</Text>
+            </View>
+            <View style={styles.todolistviewcontent}>
+                <TouchableHighlight style={styles.todolistviewitem} onPress={openTodoList}>
+                    <View style={styles.todolistviewitemcontent}>
+                        <IconFont style={styles.todolistviewicon} name="icon-ToDoListTotal" />
+                        <Text style={styles.todolistviewitemtext}>代办审批</Text>
+                        <TodoCount style={styles.todolistviewitembadge} yigoid="Grid1" sumField="C" />
+                    </View>
+                </TouchableHighlight>
+                <TouchableHighlight style={styles.todolistviewitem} onPress={openCompleteList}>
+                    <View style={styles.todolistviewitemcontent}>
+                        <IconFont style={styles.todolistviewicon} name="icon-CompleteWorkFlow" />
+                        <Text style={styles.todolistviewitemtext}>已办审批</Text>
+                    </View>
+                </TouchableHighlight>
+            </View>
+        </View>
+    )
+}
 class TodoList extends PureComponent {
     render() {
         return (<CustomBillForm formKey="ToDoListTotal" oid="-1" status="DEFAULT">
             <BillContainer>
                 <OperationExecTimer yigoid="flush" ticks={600000} />
-                <GridView
-                    yigoid="Grid1"
-                    showHead={false}
-                    clickMode="dblclick"
-                    useBodyScroll={true}
-                    divider={true}
-                    dividerStyle={{
-                        borderBottomWidth: 10,
-                        borderBottomColor: '#F7F7F7',
-                    }}
-                    primaryKey={<FlexBox direction="row" style={{flex: 1, paddingRight: 12, alignItems: 'center' }}>
-                        <BooksTypeImage yigoid="formKey" style={{ paddingRight: 12 }} />
-                        <ListText yigoid="formname" style={{ flex: 1 }} />
-                        <BadgeText yigoid="C" />
-                    </FlexBox>}
-                />
+                <TodoListView />
             </BillContainer>
         </CustomBillForm>);
     }
@@ -683,8 +768,8 @@ class ImageCarousel extends PureComponent {
 
 class PersonelChart extends PureComponent {
     render() {
-        return(
-            <CustomBillForm formKey = "PersonalMobileExport" oid="-1" status="EDIT">
+        return (
+            <CustomBillForm formKey="PersonalMobileExport" oid="-1" status="EDIT">
                 <GridChart
                     yigoid="Grid1"
                     title={{
@@ -695,8 +780,8 @@ class PersonelChart extends PureComponent {
                     tooltip={{
                         formatter: '{d}'
                     }}
-                    legend= {{}}
-                    style={{height: 400}}
+                    legend={{}}
+                    style={{ height: 400 }}
                     slice={
                         [
                             "feeTypeID_D",
