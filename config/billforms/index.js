@@ -47,6 +47,7 @@ import ProjectEapWorkFlowAuditOpinion from './ProjectEapWorkFlowAuditOpinion';
 import ChangePassWord from './ChangePassWord';
 import ToDoWorkFlow from './ToDoWorkFlow';
 import CompleteWorkFlow from './CompleteWorkFlow';
+import ToDoWorkFlowQuery from './ToDoWorkFlowQuery';
 
 export default {
     default: defaultForm,
@@ -113,4 +114,5 @@ export default {
     ChangePassWord,
     ToDoWorkFlow,
     CompleteWorkFlow,
+    ToDoWorkFlowQuery_modal: ToDoWorkFlowQuery,
 };

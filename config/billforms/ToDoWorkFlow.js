@@ -1,5 +1,5 @@
 export default {
-    "formTemplate": "list",
+    "formTemplate": "listwithquery",
     "refresh": {
         "type": "button",
         "buttonId": "Button1"
@@ -7,6 +7,7 @@ export default {
     contentStyle: {
         backgroundColor: '#F8F8F8'
     },
+    queryId: 'Button1',
     "head": {
         "type": "element",
         "elementType": "Header",
@@ -27,75 +28,55 @@ export default {
             }
         }
     },
-    "filterBlock": {
-        "type": "element",
-        "elementType": "FilterBlock",
-        "elementProps": {
-            "filterItems": [
-                {
-                    "type": "element",
-                    "elementType": "PopoverCombobox",
-                    "elementProps": {
-                        "type": "popup",
-                        "yigoid": "BillType_NODB4Other",
-                        "placeholder": "类型",
-                        "layoutStyles": {
-                            "justifyContent": "center"
-                        },
-                        "textStyles": {
-                            "fontSize": 11
-                        },
-                        "style": {
-                            "flex": 1
-                        }
-                    }
+    queryItems: [{
+        text: '单据编号',
+        content: {
+            "type": "element",
+            "elementType": "Text",
+            "elementProps": {
+                "yigoid": 'NO_NODB4Other',
+                "clearButtonMode": true,
+                "scanMode": true,
+                textStyles: {
+                    paddingLeft: 24,
+                    paddingRight: 12,
+                    borderWidth: 1,
+                    borderColor: 'lightgray',
+                    borderRadius: 20,
                 },
-                {
-                    "type": "element",
-                    "elementType": "PopoverCombobox",
-                    "elementProps": {
-                        "type": "popup",
-                        "yigoid": "IsLinked_NODB4Other",
-                        "placeholder": "状态",
-                        "layoutStyles": {
-                            "justifyContent": "center"
-                        },
-                        "textStyles": {
-                            "fontSize": 11
-                        },
-                        "style": {
-                            "flex": 1
-                        }
-                    }
-                },
-                {
-                    "type": "element",
-                    "elementType": "DateRangeSelect",
-                    "elementProps": {
-                        "startDateField": "StartDate_NODB4Other",
-                        "endDateField": "EndDate_NODB4Other",
-                        "placeholder": "期间",
-                        "value": "last week",
-                        "style": {
-                            "flex": 1,
-                            "alignItems": "center",
-                            "justifyContent": "center"
-                        },
-                        "openIconStyle": {
-                            "color": "#3D8AD0"
-                        },
-                        "openTextStyle": {
-                            "color": "#3D8AD0"
-                        }
-                    }
+                layoutStyles: {
+                    paddingLeft: 12,
+                    marginRight: 12,
+                    paddingTop: 8,
+                    paddingBottom: 8,
                 }
-            ],
-            "style": {
-                "height": 45
-            },
-            "hasMore": false,
-            "queryButton": "Button1"
+            }
         }
+    }, {
+        text: '单据类型',
+        content: {
+            "type": "element",
+            "elementType": "PopoverCombobox",
+            "elementProps": {
+                "yigoid": 'BillType_NODB4Other',
+                inline: true,
+            }
+        }
+    }, {
+        text: '制单人',
+        content: {
+            "type": "element",
+            "elementType": "ChainDict",
+            "elementProps": {
+                "yigoid": 'Creator_NODB4Other',
+                inline: true,
+                hideTitle: true,
+            }
+        }
+    }],
+    advanceQuery: {
+        type: 'button',
+        yigoid: 'Button2'
     },
     "foot": {
         "type": "element",
@@ -139,21 +120,34 @@ export default {
                             "elementProps": {
                                 yigoid: "isSelect",
                                 onlyShow: false,
-                                size: 22,
+                                size: 25,
+                                color: '#008CD7',
+                                style: {
+                                    width: 30,
+                                }
                             }
                         },
                         {
                             "type": "element",
                             "elementType": "BooksTypeImage",
                             "elementProps": {
-                                yigoid: "formkey"
+                                yigoid: "formkey",
+                                style: {
+                                    width: 30
+                                }
                             }
                         },
                         {
                             "type": "element",
-                            "elementType": "Text",
+                            "elementType": "ListText",
                             "elementProps": {
-                                yigoid: "FormName"
+                                yigoid: "FormName",
+                                style: {
+                                    fontSize: 17.5,
+                                    fontFamily: 'PingFangSC-Medium, PingFang SC',
+                                    fontWeight: 500,
+                                    color: '#333333',
+                                }
                             }
                         }
                     ],
@@ -161,7 +155,11 @@ export default {
                         "type": "element",
                         "elementType": "ListText",
                         "elementProps": {
-                            yigoid: "BillTime"
+                            yigoid: "BillTime",
+                            style: {
+                                color: '#666666',
+                                fontSize: 10,
+                            }
                         }
                     }],
                     "content":
@@ -220,6 +218,7 @@ export default {
                             "elementProps": {
                                 containerStyle: {
                                     width: 120,
+                                    height: 36,
                                 },
                                 items: [{
                                     key: 'RevokeButton',
