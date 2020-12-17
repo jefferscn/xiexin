@@ -48,6 +48,7 @@ import ChangePassWord from './ChangePassWord';
 import ToDoWorkFlow from './ToDoWorkFlow';
 import CompleteWorkFlow from './CompleteWorkFlow';
 import ToDoWorkFlowQuery from './ToDoWorkFlowQuery';
+import CompleteWorkFlowQuery from './CompleteWorkFlowQuery';
 
 export default {
     default: defaultForm,
@@ -115,4 +116,5 @@ export default {
     ToDoWorkFlow,
     CompleteWorkFlow,
     ToDoWorkFlowQuery_modal: ToDoWorkFlowQuery,
+    CompleteWorkFlowQuery_modal: CompleteWorkFlowQuery,
 };

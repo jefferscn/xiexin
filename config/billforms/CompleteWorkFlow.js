@@ -1,9 +1,10 @@
 export default {
-    "formTemplate": "list",
+    "formTemplate": "listwithquery",
     "refresh": {
         "type": "button",
         "buttonId": "Button1"
     },
+    queryId: 'Button1',
     "head": {
         "type": "element",
         "elementType": "Header",
@@ -24,75 +25,48 @@ export default {
             }
         }
     },
-    "filterBlock": {
-        "type": "element",
-        "elementType": "FilterBlock",
-        "elementProps": {
-            "filterItems": [
-                {
-                    "type": "element",
-                    "elementType": "PopoverCombobox",
-                    "elementProps": {
-                        "type": "popup",
-                        "yigoid": "BillType_NODB4Other",
-                        "placeholder": "类型",
-                        "layoutStyles": {
-                            "justifyContent": "center"
-                        },
-                        "textStyles": {
-                            "fontSize": 11
-                        },
-                        "style": {
-                            "flex": 1
-                        }
-                    }
-                },
-                {
-                    "type": "element",
-                    "elementType": "PopoverCombobox",
-                    "elementProps": {
-                        "type": "popup",
-                        "yigoid": "IsLinked_NODB4Other",
-                        "placeholder": "状态",
-                        "layoutStyles": {
-                            "justifyContent": "center"
-                        },
-                        "textStyles": {
-                            "fontSize": 11
-                        },
-                        "style": {
-                            "flex": 1
-                        }
-                    }
-                },
-                {
-                    "type": "element",
-                    "elementType": "DateRangeSelect",
-                    "elementProps": {
-                        "startDateField": "StartDate_NODB4Other",
-                        "endDateField": "EndDate_NODB4Other",
-                        "placeholder": "期间",
-                        "value": "last week",
-                        "style": {
-                            "flex": 1,
-                            "alignItems": "center",
-                            "justifyContent": "center"
-                        },
-                        "openIconStyle": {
-                            "color": "#3D8AD0"
-                        },
-                        "openTextStyle": {
-                            "color": "#3D8AD0"
+    queryItems: [
+        {
+            text: '单据名称',
+            content: {
+                "type": "element",
+                "elementType": "QueryContainer",
+                "elementProps": {
+                    "supportClear": true,
+                    "clearControls": ['BillType_NODB4Other'],
+                    "content": {
+                        "type": "element",
+                        "elementType": "PopoverCombobox",
+                        "elementProps": {
+                            "yigoid": 'BillType_NODB4Other',
+                            inline: true,
                         }
                     }
                 }
-            ],
-            "style": {
-                "height": 45
-            },
-            "hasMore": false,
-            "queryButton": "Query"
-        }
+            }
+        }, {
+            text: '制单人',
+            content: {
+                "type": "element",
+                "elementType": "QueryContainer",
+                "elementProps": {
+                    "supportClear": true,
+                    "clearControls": ['Creator_NODB4Other'],
+                    "content": {
+                        "type": "element",
+                        "elementType": "ChainDict",
+                        "elementProps": {
+                            "yigoid": 'Creator_NODB4Other',
+                            inline: true,
+                            hideTitle: true,
+                        }
+                    }
+                }
+            }
+        }],
+    advanceQuery: {
+        type: 'button',
+        yigoid: 'Button2'
     },
     "list": {
         "type": "element",
@@ -107,8 +81,11 @@ export default {
                 "Cause"
             ],
             "style": {
-                "marginLeft": 12,
-                "flex": 1
+                "flex": 1,
+                backgroundColor: '#F8F8F8'
+            },
+            rowStyle: {
+                height: 76
             },
             "tertiaryKey": [
                 {
@@ -116,7 +93,13 @@ export default {
                     "elementType": "ListText",
                     "elementProps": {
                         "yigoid": "NO",
-                        "template": "单据编号:${displayValue}"
+                        "template": "单据编号:${displayValue}",
+                        "style": {
+                            "whiteSpace": "nowrap",
+                            "overflow": 'hidden',
+                            "color": "rgba(0,0,0,0.6)",
+                            fontSize: 12,
+                        }
                     }
                 }
             ],

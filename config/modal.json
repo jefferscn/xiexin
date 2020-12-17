@@ -45,5 +45,6 @@
     "FSSC_ShipTicketInvoice_View",
     "FSSC_TollInvoice_View",
     "ProjectEapWorkFlowAuditOpinion",
-    "ToDoWorkFlowQuery"
+    "ToDoWorkFlowQuery",
+    "CompleteWorkFlowQuery"
 ]
