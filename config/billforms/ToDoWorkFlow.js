@@ -56,21 +56,37 @@ export default {
         text: '单据类型',
         content: {
             "type": "element",
-            "elementType": "PopoverCombobox",
+            "elementType": "QueryContainer",
             "elementProps": {
-                "yigoid": 'BillType_NODB4Other',
-                inline: true,
+                "supportClear": true,
+                "clearControls": ['BillType_NODB4Other'],
+                "content": {
+                    "type": "element",
+                    "elementType": "PopoverCombobox",
+                    "elementProps": {
+                        "yigoid": 'BillType_NODB4Other',
+                        inline: true,
+                    }
+                }
             }
         }
     }, {
         text: '制单人',
         content: {
             "type": "element",
-            "elementType": "ChainDict",
+            "elementType": "QueryContainer",
             "elementProps": {
-                "yigoid": 'Creator_NODB4Other',
-                inline: true,
-                hideTitle: true,
+                "supportClear": true,
+                "clearControls": ['Creator_NODB4Other'],
+                "content": {
+                    "type": "element",
+                    "elementType": "ChainDict",
+                    "elementProps": {
+                        "yigoid": 'Creator_NODB4Other',
+                        inline: true,
+                        hideTitle: true,
+                    }
+                }
             }
         }
     }],

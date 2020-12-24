@@ -365,6 +365,10 @@ const actionMeta = {
                     {
                         "text": "新建账本",
                         "key": "Button2"
+                    },
+                    {
+                        "text": "发票识别",
+                        "key": "AddBooks"
                     }
                 ],
                 "style": {

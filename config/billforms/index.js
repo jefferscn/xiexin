@@ -48,6 +48,7 @@ import ChangePassWord from './ChangePassWord';
 import ToDoWorkFlow from './ToDoWorkFlow';
 import CompleteWorkFlow from './CompleteWorkFlow';
 import ToDoWorkFlowQuery from './ToDoWorkFlowQuery';
+import CompleteWorkFlowQuery from './CompleteWorkFlowQuery';
 
 //JMRH
 import FSSC_FuzhouuanceBooks from './FSSC_FuzhouuanceBooks';
@@ -129,4 +130,5 @@ export default {
     ToDoWorkFlow,
     CompleteWorkFlow,
     ToDoWorkFlowQuery_modal: ToDoWorkFlowQuery,
+    CompleteWorkFlowQuery_modal: CompleteWorkFlowQuery,
 };
