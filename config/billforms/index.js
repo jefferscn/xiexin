@@ -57,9 +57,11 @@ import FSSC_GETAPPLY from './FSSC_GETAPPLY.json';
 import FSSC_ExpenseAccountBillBG from './FSSC_ExpenseAccountBillBG';
 import FSSC_GoGetBill from './FSSC_GoGetBill.json';
 import FSSC_ApplyChange from './FSSC_ApplyChange';
+import ERP_ResetPassWord from './ERP_ResetPassWord';
 //
 export default {
     default: defaultForm,
+    ERP_ResetPassWord,
     FSSC_ApplyChange,
     FSSC_FuzhouuanceBooks,
     FSSC_Entertainsapply,
