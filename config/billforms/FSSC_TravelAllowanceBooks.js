@@ -17,24 +17,6 @@ export default {
             }
         }
     },
-    "action": {
-        "type": "element",
-        "elementType": "VisibleRelatedDisabled",
-        "elementProps": {
-            "yigoid": "EnteyInvoice",
-            "element": {
-                "type": "element",
-                "elementType": "ButtonActionButton",
-                "elementProps": {
-                    "buttonKey": "EnteyInvoice",
-                    "style": {
-                        "right": "50%",
-                        "transform": "translateX(30px)"
-                    }
-                }
-            }
-        }
-    },
     "items": [
         {
             "type": "element",

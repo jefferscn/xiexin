@@ -17,24 +17,6 @@ export default {
             }
         }
     },
-    "action": {
-        "type": "element",
-        "elementType": "VisibleRelatedDisabled",
-        "elementProps": {
-            "yigoid": "EnteyInvoice",
-            "element": {
-                "type": "element",
-                "elementType": "ButtonActionButton",
-                "elementProps": {
-                    "buttonKey": "EnteyInvoice",
-                    "style": {
-                        "right": "50%",
-                        "transform": "translateX(30px)"
-                    }
-                }
-            }
-        }
-    },
     "items": [
         {
             "type": "element",
@@ -122,6 +104,40 @@ export default {
                 "headIcon": "",
                 "title": "发票明细",
                 "expanded": true,
+                "extra": {
+                    "type": "element",
+                    "elementType": "GridRowCountLimit",
+                    "elementProps": {
+                        yigoid: "Grid1",
+                        sizeLimit: 1,
+                        element: {
+                            "type": "element",
+                            "elementType": "ButtonClick",
+                            "elementProps": {
+                                yigoid: 'EnteyInvoice',
+                                element: {
+                                    "type": "element",
+                                    "elementType": "IconButton",
+                                    "elementProps": {
+                                        title: '添加',
+                                        icon: "plus",
+                                        style: {
+                                            maxWidth: 50,
+                                            fontSize: 16,
+                                        },
+                                        textStyle: {
+                                            color: 'rgb(33, 150, 243)',
+                                            paddingLeft: 6,
+                                        },
+                                        iconStyle: {
+                                            color: 'rgb(33, 150, 243)',
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
                 "content": {
                     "type": "element",
                     "elementType": "GridView",
