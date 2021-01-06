@@ -109,7 +109,10 @@ export default {
             "elementType": "Card",
             "elementProps": {
                 "collapseable": true,
-                "headIcon": "",
+                "headIcon": "tag",
+                "iconStyle": {
+                    color: '#0BA194',
+                },
                 "title": "发票明细",
                 "expanded": true,
                 "content": {
@@ -121,141 +124,244 @@ export default {
                         // "clickMode": "script",
                         // "clickScript": 'if(IsNewOrEdit()){SetPara("resource", 2);} else{SetPara("resource", 3);} Open(Macro_GetBillKeyByInvoiceType(InvoiceType), InvoiceID, "modal", "View");',
                         "hideAction": true,
-                        "removeType": "column",
-                        "removeColumn": "DeleteDtl",
-                        "headExtra": {
+                        // "removeType": "column",
+                        // "removeColumn": "DeleteDtl",
+                        "RowElement": {
                             "type": "element",
-                            "elementType": "MoneyWithCurrency",
+                            "elementType": "GridRow",
                             "elementProps": {
-                                "currencyField": {
+                                headLeft: [{
                                     "type": "element",
-                                    "elementType": "SplitText",
+                                    "elementType": "ListText",
                                     "elementProps": {
-                                        "yigoid": "CurrencyID",
-                                        "style": {
-                                            "display": "flex",
-                                            "justifyContent": "center",
-                                            "alignItems": "center",
-                                            "fontSize": 12,
-                                            "color": "green",
-                                            "paddingRight": 4
+                                        yigoid: "InvoiceType",
+                                        style: {
+                                            fontSize: 17.5,
+                                            fontFamily: 'PingFangSC-Medium, PingFang SC',
+                                            fontWeight: 500,
+                                            color: '#333333',
                                         }
                                     }
-                                },
-                                "moneyField": "TotalMoney",
-                                "containerStyle": {
-                                    "flex": 1
-                                }
-                            }
-                        },
-                        "detailElement": {
-                            "type": "element",
-                            "elementType": "ScriptWrap",
-                            "elementProps": {
-                                "script": 'if(IsNewOrEdit()){SetPara("resource", 2);} else{SetPara("resource", 3);} Open(Macro_GetBillKeyByInvoiceType(InvoiceType), InvoiceID, "modal", "View");',
-                                "element": {
+                                }],
+                                headRight: [{
                                     "type": "element",
-                                    "elementType": "NativeButton",
+                                    "elementType": "ButtonClick",
                                     "elementProps": {
-                                        "title": "打开发票"
-                                    }
-                                }
-                            }
-                        },
-                        "rightElement": {
-                            "type": "element",
-                            "elementType": "FlexBox",
-                            "elementProps": {
-                                "direction": "column",
-                                "style": {
-                                    "justifyContent": "space-between"
-                                },
-                                "items": [
-                                    {
-                                        "type": "element",
-                                        "elementType": "SplitText",
-                                        "elementProps": {
-                                            "yigoid": "FSSC_Date",
-                                            "style": {
-                                                "fontSize": 12,
-                                                "paddingTop": 12,
-                                                "textAlign": "right"
+                                        yigoid: "DeleteDtl",
+                                        children: {
+                                            "type": "element",
+                                            "elementType": "IconButton",
+                                            "elementProps": {
+                                                icon: "trash",
+                                                style: {
+                                                    maxWidth: 30,
+                                                },
+                                                iconStyle: {
+                                                    fontSize: 16,
+                                                    color: 'rgb(33, 150, 243)',
+                                                }
                                             }
                                         }
-                                    },
-                                    {
-                                        "type": "element",
-                                        "elementType": "MoneyWithCurrency",
-                                        "elementProps": {
-                                            "currencyField": {
+                                    }
+                                }, {
+                                    "type": "element",
+                                    "elementType": "ScriptWrap",
+                                    "elementProps": {
+                                        "script": 'if(IsNewOrEdit()){SetPara("resource", 2);} else{SetPara("resource", 3);} Open(Macro_GetBillKeyByInvoiceType(InvoiceType), InvoiceID, "modal", "View");',
+                                        "element": {
+                                            "type": "element",
+                                            "elementType": "IconButton",
+                                            "elementProps": {
+                                                icon: "search",
+                                                style: {
+                                                    maxWidth: 30,
+                                                },
+                                                iconStyle: {
+                                                    fontSize: 16,
+                                                    color: 'rgb(33, 150, 243)',
+                                                }
+                                            }
+                                        }
+                                    }
+                                }],
+                                content: {
+                                    "type": "element",
+                                    "elementType": "FlexBox",
+                                    "elementProps": {
+                                        items: [
+                                            {
                                                 "type": "element",
-                                                "elementType": "SplitText",
+                                                "elementType": "FlexBox",
                                                 "elementProps": {
-                                                    "yigoid": "Currency",
-                                                    "style": {
-                                                        "fontSize": 12,
-                                                        "paddingRight": 2,
-                                                        "textAlign": "right"
-                                                    }
+                                                    direction: 'row',
+                                                    style: {
+                                                        paddingLeft: 12,
+                                                        paddingRight: 12,
+                                                        paddingTop: 8,
+                                                    },
+                                                    items: [
+                                                        {
+                                                            "type": "element",
+                                                            "elementType": "NativeText",
+                                                            "elementProps": {
+                                                                children: '出发:',
+                                                                style: {
+                                                                    color: '#808A99',
+                                                                    paddingRight: 10,
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "type": "element",
+                                                            "elementType": "ListText",
+                                                            "elementProps": {
+                                                                yigoid: 'Station_geton',
+                                                                style: {
+                                                                    paddingRight: 10,
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "type": "element",
+                                                            "elementType": "NativeText",
+                                                            "elementProps": {
+                                                                children: '到达:',
+                                                                style: {
+                                                                    color: '#808A99',
+                                                                    paddingRight: 10,
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "type": "element",
+                                                            "elementType": "ListText",
+                                                            "elementProps": {
+                                                                yigoid: 'Station_getoff',
+                                                            }
+                                                        }
+                                                    ]
                                                 }
                                             },
-                                            "moneyField": "FSSC_Total",
-                                            "containerStyle": {
-                                                "paddingBottom": 6,
-                                                "justifyContent": "flex-end",
-                                                "paddingRight": 0
+                                            {
+                                                "type": "element",
+                                                "elementType": "FlexBox",
+                                                "elementProps": {
+                                                    direction: 'row',
+                                                    style: {
+                                                        paddingLeft: 12,
+                                                        paddingRight: 12,
+                                                        paddingTop: 8,
+                                                    },
+                                                    items: [
+                                                        {
+                                                            "type": "element",
+                                                            "elementType": "NativeText",
+                                                            "elementProps": {
+                                                                children: '乘车日期:',
+                                                                style: {
+                                                                    color: '#808A99',
+                                                                    paddingRight: 10,
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "type": "element",
+                                                            "elementType": "ListText",
+                                                            "elementProps": {
+                                                                yigoid: 'FSSC_Date',
+                                                            }
+                                                        },
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "type": "element",
+                                                "elementType": "FlexBox",
+                                                "elementProps": {
+                                                    direction: 'row',
+                                                    style: {
+                                                        paddingLeft: 12,
+                                                        paddingRight: 12,
+                                                        paddingTop: 8,
+                                                    },
+                                                    items: [
+                                                        {
+                                                            "type": "element",
+                                                            "elementType": "NativeText",
+                                                            "elementProps": {
+                                                                children: '坐席:',
+                                                                style: {
+                                                                    color: '#808A99',
+                                                                    paddingRight: 10,
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "type": "element",
+                                                            "elementType": "ListText",
+                                                            "elementProps": {
+                                                                yigoid: 'FSSC_Seat',
+                                                            }
+                                                        },
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "type": "element",
+                                                "elementType": "FlexBox",
+                                                "elementProps": {
+                                                    direction: 'row',
+                                                    style: {
+                                                        paddingLeft: 12,
+                                                        paddingRight: 12,
+                                                        paddingTop: 8,
+                                                    },
+                                                    items: [
+                                                        {
+                                                            "type": "element",
+                                                            "elementType": "NativeText",
+                                                            "elementProps": {
+                                                                children: '发票金额:',
+                                                                style: {
+                                                                    color: '#808A99',
+                                                                    paddingRight: 10,
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "type": "element",
+                                                            "elementType": "MoneyWithCurrency",
+                                                            "elementProps": {
+                                                                "currencyField": {
+                                                                    "type": "element",
+                                                                    "elementType": "SplitText",
+                                                                    "elementProps": {
+                                                                        "yigoid": "Currency",
+                                                                        "style": {
+                                                                            "fontSize": 12,
+                                                                            "paddingRight": 2,
+                                                                            "textAlign": "right"
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "moneyField": "FSSC_Total",
+                                                                "containerStyle": {
+                                                                    "justifyContent": "flex-end",
+                                                                    alignItems: 'center',
+                                                                    "paddingRight": 0
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
                                             }
-                                        }
-                                    }
-                                ]
-                            }
-                        },
-                        "primaryKey": {
-                            "type": "element",
-                            "elementType": "FromTo",
-                            "elementProps": {
-                                "fromId": {
-                                    "type": "element",
-                                    "elementType": "SplitText",
-                                    "elementProps": {
-                                        "yigoid": "Station_geton",
-                                        "showIndex": 1,
-                                        "emptyStr": "未填",
-                                        "style": {
-                                            "display": "flex",
-                                            "justifyContent": "center",
-                                            "alignItems": "center",
-                                            "fontSize": 12,
-                                            "paddingRight": 4
-                                        }
+                                        ],
                                     }
                                 },
-                                "toId": {
-                                    "type": "element",
-                                    "elementType": "SplitText",
-                                    "elementProps": {
-                                        "yigoid": "Station_getoff",
-                                        "showIndex": 1,
-                                        "emptyStr": "未填",
-                                        "style": {
-                                            "display": "flex",
-                                            "justifyContent": "center",
-                                            "alignItems": "center",
-                                            "fontSize": 12,
-                                            "paddingRight": 4
-                                        }
-                                    }
-                                }
                             },
-                            "secondKey": [
-                                "Train_number"
-                            ],
-                            "teriatiaryKey": [
-                                "FSSC_Seat"
-                            ]
-                        }
+                        },
                     }
-                }
+                },
             }
         }
     ],
