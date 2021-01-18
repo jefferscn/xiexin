@@ -223,7 +223,7 @@ export default class InvoiceEntry extends PureComponent {
             >
                 {formStatus === 'ok' ?
                     <ComboBox
-                        yigoid="SelectType_NODB4Other"
+                        yigoid="SelectType"
                         inline
                         imgElement={<SourceTypeIcon style={{ paddingRight: 8 }} />}
                         onChange={this.onSelectTypeChange}

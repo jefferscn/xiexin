@@ -103,7 +103,10 @@ export default {
                             "CostCompayCodeID",
                             "CostDept",
                             "ProjectID",
-                            "LoanAmount",
+                            {
+                                key: "LoanAmount",
+                                stickFocus: true,
+                            },
                             "PayType",
                             "IndexID",
                             "CurrencyID"

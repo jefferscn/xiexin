@@ -46,5 +46,6 @@
     "FSSC_TollInvoice_View",
     "ProjectEapWorkFlowAuditOpinion",
     "ToDoWorkFlowQuery",
-    "CompleteWorkFlowQuery"
+    "CompleteWorkFlowQuery",
+    "WFLog"
 ]

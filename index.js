@@ -13,7 +13,7 @@ import { openModal } from 'yes-framework/util/navigateUtil';
 const invokeService = YIGOView.FuncMap.get('InvokeService')
 import { Util } from 'yes-web';
 
-import './damaopatch';
+// import './damaopatch';
 import './patch';
 
 AppDispatcher.register((action) => {

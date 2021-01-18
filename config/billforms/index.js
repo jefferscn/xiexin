@@ -117,4 +117,5 @@ export default {
     CompleteWorkFlow,
     ToDoWorkFlowQuery_modal: ToDoWorkFlowQuery,
     CompleteWorkFlowQuery_modal: CompleteWorkFlowQuery,
+    WFLog_modal: FSSC_WFLog,
 };

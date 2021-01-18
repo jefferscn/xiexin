@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, View, TextInput, 
+import {
+    Platform, StyleSheet, View, TextInput,
     Text, Image, Button, ImageBackground, Switch,
-    TouchableOpacity, ActivityIndicator } from 'react-native';
+    TouchableOpacity, ActivityIndicator
+} from 'react-native';
 import { LoginWrap as loginWrap } from 'yes'; // eslint-disable-line
 import Icon from 'react-native-vector-icons/FontAwesome';
 import LoginBG from '../res/login_bg.png';
@@ -156,20 +158,24 @@ class Login extends Component {
         }
     }
     async handleClickLogin() {
-        if(this.state.logining) {
+        if (this.state.logining) {
             return;
         }
         this.setState({
             logining: true,
         });
-        try{
-        await this.props.handleClickLogin(
-            `${this.state.corp}_${this.state.user}`,
-            this.state.password,
-            {
-                OrgCode: this.state.corp,
-            });
-        }finally {
+        try {
+            // await this.props.handleClickLogin(
+            //     `${this.state.corp}_${this.state.user}`,
+            //     this.state.password,
+            //     {
+            //         OrgCode: this.state.corp,
+            //     });
+            await this.props.handleClickLogin(
+                this.state.user,
+                this.state.password,
+            );
+        } finally {
             this.setState({
                 logining: false,
             });
@@ -189,7 +195,7 @@ class Login extends Component {
             localStorage.setItem(util.getProjectKey("password"), '');
         }
     }
-    toggleShowPassword = ()=> {
+    toggleShowPassword = () => {
         this.setState({
             showPassword: !this.state.showPassword,
         });
@@ -250,7 +256,7 @@ class Login extends Component {
                             <View>
                                 <TextInput
                                     value={this.state.password}
-                                    secureTextEntry={this.state.showPassword?false:true}
+                                    secureTextEntry={this.state.showPassword ? false : true}
                                     keyboardType="default"
                                     style={passwordTextInputStyle}
                                     placeholder="密码"
@@ -263,7 +269,7 @@ class Login extends Component {
                                     <Icon name="lock" style={styles.icon} />
                                 </View>
                                 <TouchableOpacity style={styles.iconRight} onPress={this.toggleShowPassword}>
-                                    <Icon name={this.state.showPassword?"eye":"eye-slash"} style={styles.icon} />
+                                    <Icon name={this.state.showPassword ? "eye" : "eye-slash"} style={styles.icon} />
                                 </TouchableOpacity>
                             </View>
                             <View style={styles.button}>
@@ -271,7 +277,7 @@ class Login extends Component {
                                     raised
                                     primary
                                     style={styles.button}
-                                    title={!this.state.logining?'登录':<ActivityIndicator />}
+                                    title={!this.state.logining ? '登录' : <ActivityIndicator />}
                                     onPress={this.handleClickLogin}
                                 />
                             </View>
