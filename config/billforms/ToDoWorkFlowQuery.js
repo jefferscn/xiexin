@@ -2,7 +2,7 @@ export default {
     "formTemplate": "modal",
     "content": {
         "type": "element",
-        "elementType": "ColumnView",
+        "elementType": "FlexBox",
         "elementProps": {
             "items": [
                 {

@@ -5,7 +5,7 @@ import { GridRowWrap, GridWrap, notEmptyVisibleWrapper } from 'yes';
 // import styles from 'yes-framework/style';
 import { TextArea, ListComponents } from 'yes-comp-react-native-web';
 // import TextArea from './TextArea';
-import SplitText from 'yes-framework/controls/SplitText';
+import SplitText from 'yes-framework/controls/Yigo/Text/SplitText';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import PropTypes from 'prop-types';
 import Avator from './Avator';

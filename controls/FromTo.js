@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import { View, StyleSheet } from 'react-native';
-import IconFont from 'yes-framework/font';
 import { ListComponents } from 'yes-comp-react-native-web';
 import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/FontAwesome';

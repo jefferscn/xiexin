@@ -3,7 +3,7 @@ import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import { ListComponents } from 'yes-comp-react-native-web';
 import { ListRowWrap } from 'yes-intf';
 import TicketNameBadge from './TicketNameBadge';
-import SplitText from 'yes-framework/controls/SplitText';
+import SplitText from 'yes-framework/controls/Yigo/Text/SplitText';
 
 const pressRetentionOffset = { top: 1, left: 1, right: 1, bottom: 1 };
 
