@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import ListText from 'yes-framework/controls/ListText';
+import { ListText } from 'yes-framework/export';
 import Avator from './Avator';
-import SplitText from 'yes-framework/controls/SplitText';
+import { SplitText } from 'yes-framework/export';
 
 const styles = StyleSheet.create({
     card: {
