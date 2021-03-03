@@ -1,11 +1,10 @@
 import React, { PureComponent } from 'react';
-import { CustomBillForm, ListComponents, Image } from 'yes-comp-react-native-web';
+import { CustomBillForm, Image } from 'yes-comp-react-native-web';
 import wode from '../res/wode.png';
 import { StyleSheet, ScrollView, View, ImageBackground, TouchableOpacity, Text } from 'react-native';
 import AwesomeFontIcon from 'react-native-vector-icons/FontAwesome';
 import { History } from 'yes-web';
-import ListText from 'yes-framework/controls/ListText';
-import SplitText from 'yes-framework/controls/SplitText';
+import { ListText, SplitText } from 'yes-framework/export';
 
 const styles = StyleSheet.create({
     image: {

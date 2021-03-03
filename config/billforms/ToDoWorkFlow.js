@@ -181,7 +181,7 @@ export default {
                     "content":
                     {
                         "type": "element",
-                        "elementType": "ControlList",
+                        "elementType": "TextList",
                         "elementProps": {
                             template: '${caption}:${displayValue}',
                             style: {

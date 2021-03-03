@@ -6,31 +6,20 @@ import {
 } from 'react-native';
 import IconFont from 'yes-framework/font';
 import { Modal, WhiteSpace } from 'antd-mobile';
-// import { showModal } from 'yes-framework/SiblingMgr';
 import util from '../util';
 import { openForm, openModal } from 'yes-framework/util/navigateUtil';
 import { CustomBillForm } from 'yes-comp-react-native-web';
-import GridView from 'yes-framework/controls/GridView';
-import FlexBox from 'yes-framework/controls/FlexBox';
-import { ListComponents } from 'yes-comp-react-native-web';
 import PropTypes from 'prop-types';
-import ImageCarouselGrid from 'yes-framework/controls/ImageCarouselGrid';
+import { ImageCarouselGrid, Header, OperationExecTimer, EntryRight } from 'yes-framework/export';
 import { Svr } from 'yes-core';
-import BooksTypeImage from './BooksTypeImage';
-import BadgeText from 'yes-framework/controls/BadgeText'
 import { allList, selectedList, saveSelectedList } from '../res/entrylist';
 import AwesomeFontIcon from 'react-native-vector-icons/FontAwesome';
-import Header from 'yes-framework/controls/Header';
 import { History } from 'yes-web';
-import OperationExecTimer from 'yes-framework/controls/OperationExecTimer';
 import BillContainer from './BillContainer';
 import { Util } from 'yes-intf';
 import Global from 'global';
 import { GridChart } from 'yg-echarts';
-// import Icon from 'react-native-vector-icons/FontAwesome';
-import GridTotal from 'yes-framework/controls/GridTotal';
-
-const { ListText } = ListComponents;
+import GridTotal from 'yes-framework/hoc/GridTotal';
 
 const styles = StyleSheet.create({
     page: {
@@ -721,13 +710,15 @@ const TodoListView = () => {
                 <Text style={styles.todolistviewtitle}>审批任务</Text>
             </View>
             <View style={styles.todolistviewcontent}>
-                <TouchableHighlight style={styles.todolistviewitem} onPress={openTodoList}>
-                    <View style={styles.todolistviewitemcontent}>
-                        <IconFont style={styles.todolistviewicon} name="icon-ToDoListTotal" />
-                        <Text style={styles.todolistviewitemtext}>代办审批</Text>
-                        <TodoCount style={styles.todolistviewitembadge} yigoid="Grid1" sumField="C" />
-                    </View>
-                </TouchableHighlight>
+                <EntryRight entry={'afasdfa'}>
+                    <TouchableHighlight style={styles.todolistviewitem} onPress={openTodoList}>
+                        <View style={styles.todolistviewitemcontent}>
+                            <IconFont style={styles.todolistviewicon} name="icon-ToDoListTotal" />
+                            <Text style={styles.todolistviewitemtext}>代办审批</Text>
+                            <TodoCount style={styles.todolistviewitembadge} yigoid="Grid1" sumField="C" />
+                        </View>
+                    </TouchableHighlight>
+                </EntryRight>
                 <TouchableHighlight style={styles.todolistviewitem} onPress={openCompleteList}>
                     <View style={styles.todolistviewitemcontent}>
                         <IconFont style={styles.todolistviewicon} name="icon-CompleteWorkFlow" />

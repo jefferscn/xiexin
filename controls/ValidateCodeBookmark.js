@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import { View, StyleSheet } from 'react-native';
-import VisibleNotEqual from 'yes-framework/controls/VisibleNotEqual';
-import ListText from 'yes-framework/controls/ListText';
+import { VisibleNotEqual, ListText } from 'yes-framework/export';
 
 const styles = StyleSheet.create({
     bookmark: {

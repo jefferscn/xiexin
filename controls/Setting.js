@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react';
-import Header from 'yes-framework/controls/Header';
+import { Header } from 'yes-framework/export';
 import { View, StyleSheet, Button, ActivityIndicator } from 'react-native';
 import { List } from 'antd-mobile';
 import { AppDispatcher } from 'yes-intf';
-import AppStatusWrap from 'yes-framework/controls/AppStatusWrap';
+import AppStatusWrap from 'yes-framework/hoc/AppStatusWrap';
 import { History } from 'yes-web';
-import Update from 'yes-framework/controls/Update';
+import { Update } from 'yes-framework/export';
 import { openForm } from 'yes-framework/util/navigateUtil';
 
 const Item = List.Item;
