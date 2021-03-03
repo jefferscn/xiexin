@@ -10,7 +10,7 @@ import util from '../util';
 import { openForm, openModal } from 'yes-framework/util/navigateUtil';
 import { CustomBillForm } from 'yes-comp-react-native-web';
 import PropTypes from 'prop-types';
-import { ImageCarouselGrid, Header, OperationExecTimer, EntryRight } from 'yes-framework/export';
+import { ImageCarouselGrid, Header, OperationExecTimer } from 'yes-framework/export';
 import { Svr } from 'yes-core';
 import { allList, selectedList, saveSelectedList } from '../res/entrylist';
 import AwesomeFontIcon from 'react-native-vector-icons/FontAwesome';
@@ -710,15 +710,13 @@ const TodoListView = () => {
                 <Text style={styles.todolistviewtitle}>审批任务</Text>
             </View>
             <View style={styles.todolistviewcontent}>
-                <EntryRight entry={'afasdfa'}>
-                    <TouchableHighlight style={styles.todolistviewitem} onPress={openTodoList}>
-                        <View style={styles.todolistviewitemcontent}>
-                            <IconFont style={styles.todolistviewicon} name="icon-ToDoListTotal" />
-                            <Text style={styles.todolistviewitemtext}>代办审批</Text>
-                            <TodoCount style={styles.todolistviewitembadge} yigoid="Grid1" sumField="C" />
-                        </View>
-                    </TouchableHighlight>
-                </EntryRight>
+                <TouchableHighlight style={styles.todolistviewitem} onPress={openTodoList}>
+                    <View style={styles.todolistviewitemcontent}>
+                        <IconFont style={styles.todolistviewicon} name="icon-ToDoListTotal" />
+                        <Text style={styles.todolistviewitemtext}>代办审批</Text>
+                        <TodoCount style={styles.todolistviewitembadge} yigoid="Grid1" sumField="C" />
+                    </View>
+                </TouchableHighlight>
                 <TouchableHighlight style={styles.todolistviewitem} onPress={openCompleteList}>
                     <View style={styles.todolistviewitemcontent}>
                         <IconFont style={styles.todolistviewicon} name="icon-CompleteWorkFlow" />
