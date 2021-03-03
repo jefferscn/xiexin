@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { Modal } from 'antd-mobile';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
-import GridView from 'yes-framework/controls/GridView';
+import GridView from 'yes-framework/controls/Yigo/Grid/GridView';
 
 export default class ExpenseAccountBillImport extends PureComponent {
     static contextTypes = {

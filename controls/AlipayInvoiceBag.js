@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { View, StyleSheet, ScrollView, FlatList } from 'react-native';
-import Header from 'yes-framework/controls/Header';
+import { Header } from 'yes-framework/export';
 
 const styles = StyleSheet.create({
     page: {

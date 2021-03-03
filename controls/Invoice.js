@@ -1,11 +1,9 @@
 import React, { PureComponent } from 'react';
 import { View, StyleSheet, Image, Text, PixelRatio } from 'react-native';
-import Header from 'yes-framework/controls/Header';
 import { ListComponents } from 'yes-comp-react-native-web';
-import FormTitle from 'yes-framework/controls/FormTitle';
 import Element from 'yes-framework/template/Element';
 import InvoiceValidBadge from './InvoiceValidBadge';
-import GridView from 'yes-framework/controls/GridView';
+import GridView from 'yes-framework/controls/Yigo/Grid/GridView';
 import { GridRowWrap } from 'yes';
 
 const styles = StyleSheet.create({

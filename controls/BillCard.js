@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import ListText from 'yes-framework/controls/ListText';
-import SplitText from 'yes-framework/controls/SplitText';
+import ListText from 'yes-framework/controls/Yigo/Text/ListText';
+import SplitText from 'yes-framework/controls/Yigo/Text/SplitText';
 import Avator from './Avator';
 
 const styles = StyleSheet.create({

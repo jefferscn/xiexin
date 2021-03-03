@@ -2,7 +2,7 @@ import React, { PureComponent, useState } from 'react';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import { View, StyleSheet } from 'react-native';
 import TemplateView from 'yes-framework/TemplateView';
-import Header from 'yes-framework/controls/Header';
+import { Header } from 'yes-framework/export';
 
 const styles = StyleSheet.create({
     container: {

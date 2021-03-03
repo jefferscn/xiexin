@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import { ListComponents } from 'yes-comp-react-native-web';
 import { ListRowWrap } from 'yes-intf';
-import SplitText from 'yes-framework/controls/SplitText';
+import SplitText from 'yes-framework/controls/Yigo/Text/SplitText';
 import Util from '../util';
 
 const pressRetentionOffset = { top: 1, left: 1, right: 1, bottom: 1 };

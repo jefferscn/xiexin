@@ -1,15 +1,14 @@
 import React, { PureComponent } from 'react';
 import { View, ScrollView, Text, StyleSheet, ImageBackground, ActivityIndicator } from 'react-native';
 import PropTypes from 'prop-types';
-import Header from 'yes-framework/controls/Header';
-import ListText from 'yes-framework/controls/ListText';
+import ListText from 'yes-framework/controls/Yigo/Text/ListText';
 import Avator from './Avator';
 import ExpenseImage from '../res/expense.png';
-import SplitText from 'yes-framework/controls/SplitText';
+import SplitText from 'yes-framework/controls/Yigo/Text/SplitText';
 import CellLayoutTemplate from 'yes-framework/template/TabTemplate/CellLayoutTemplate';
-import AttachmentList from 'yes-framework/controls/AttachmentList';
-import GridView from 'yes-framework/controls/GridView';
-import SegementToolbar from 'yes-framework/controls/SegementToolbar';
+import AttachmentList from 'yes-framework/controls/Yigo/Grid/AttachmentList';
+import GridView from 'yes-framework/controls/Yigo/Grid/GridView';
+import { SegementToolbar, Header, Card } from 'yes-framework/export';
 import { Modal } from 'antd-mobile';
 import { History } from 'yes-web';
 
@@ -36,14 +35,17 @@ const detailMeta = {
     ],
     headExtra: {
         "type": "element",
-        "elementType": "GridAddRow",
+        "elementType": "GridAddRowClick",
         "elementProps": {
             yigoid: "detail",
             children: {
                 "type": "element",
                 "elementType": "IconButton",
                 "elementProps": {
-                    icon: "plus",
+                    title: "添加",
+                    textStyle: {
+
+                    },
                     style: {
                         flex: 1,
                         width: 50,
@@ -433,17 +435,6 @@ class ExpenseAccountBillCard extends PureComponent {
                     <ColumnLabelText style={styles.flex1} yigoid="HasCost" label="已用金额" />
                     <ColumnLabelText style={styles.flex1} yigoid="Balance" label="余额" />
                 </View>
-            </View>
-        )
-    }
-}
-
-class Card extends PureComponent {
-    render() {
-        const { title, children } = this.props;
-        return (
-            <View style={styles.card}>
-                {children}
             </View>
         )
     }
