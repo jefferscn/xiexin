@@ -1,8 +1,8 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, useEffect, useRef } from 'react';
 import {
-    View, StyleSheet, Text, ScrollView,
+    View, StyleSheet, Text, ScrollView, Animated,
     TouchableHighlight, PanResponder, LayoutAnimation,
-    TouchableOpacity, Dimensions
+    TouchableOpacity, Dimensions,
 } from 'react-native';
 import IconFont from 'yes-framework/font';
 import { Modal, WhiteSpace } from 'antd-mobile';
@@ -10,7 +10,7 @@ import util from '../util';
 import { openForm, openModal } from 'yes-framework/util/navigateUtil';
 import { CustomBillForm } from 'yes-comp-react-native-web';
 import PropTypes from 'prop-types';
-import { ImageCarouselGrid, Header, OperationExecTimer } from 'yes-framework/export';
+import { ImageCarouselGrid, Header, OperationExecTimer, SnapCarousel } from 'yes-framework/export';
 import { Svr } from 'yes-core';
 import { allList, selectedList, saveSelectedList } from '../res/entrylist';
 import AwesomeFontIcon from 'react-native-vector-icons/FontAwesome';
@@ -213,29 +213,51 @@ class Entry extends PureComponent {
     }
 }
 
-class DragableEntry extends PureComponent {
-    static defaultProps = {
-        removable: true,
+const DragableEntry = (props) => {
+    const getPosition = () => {
+        const { column, position, width, height } = props;
+        return {
+            x: (position % column) * width,
+            y: Math.floor(position / column) * height,
+        }
     }
-    onRemove = () => {
-        this.props.onRemove && this.props.onRemove(this.props.entry);
+    const onRemove = () => {
+        props.onRemove && props.onRemove(props.entry);
     }
-    render() {
-        const { icon, text, entry, containerStyle, removable,
-            iconStyle, textStyle, iconSize } = this.props;
-        return (
-            <View style={[styles.entry, containerStyle]}
-            // {...this.props.panHandler}
-            >
-                {removable ? <TouchableHighlight style={styles.removeButton} onPress={this.onRemove}>
-                    <AwesomeFontIcon name="times" color="white" /></TouchableHighlight> : null}
-                <IconFont name={icon} size={iconSize} style={[iconStyle]} color={entry.color || "#008CD7"} />
-                <Text style={[styles.entryText, textStyle]}>{text}</Text>
-            </View>
-        )
-    }
+    const { icon, text, entry, containerStyle, removable, translate,
+        iconStyle, textStyle, iconSize, position, width, height, column } = props;
+    const translateXY = useRef(new Animated.ValueXY()).current;
+    const posStyle = {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width,
+        height,
+    };
+    useEffect(() => {
+        if (props.translate) {
+            translateXY.setValue(props.translate);
+            return;
+        }
+        const calcPos = getPosition();
+        Animated.spring(translateXY, {
+            toValue: calcPos,
+            duration: 500,
+        }).start();
+    }, [translate, position, width, height, column])
+    return (
+        <Animated.View style={[styles.entry, containerStyle, posStyle, {
+            transform: translateXY.getTranslateTransform(),
+        }]}>
+            {removable ? <TouchableHighlight style={styles.removeButton} onPress={onRemove}>
+                <AwesomeFontIcon name="times" color="white" /></TouchableHighlight> : null}
+            <IconFont name={icon} size={iconSize} style={[iconStyle]} color={entry.color || "#008CD7"} />
+            <Text style={[styles.entryText, textStyle]}>{text}</Text>
+        </Animated.View>
+    )
 }
 
+// const DragableEntry = Animated.createAnimatedComponent(DragableEntry_);
 class FavoriteLine extends PureComponent {
     state = {
         editing: false,
@@ -259,13 +281,13 @@ class FavoriteLine extends PureComponent {
         return (<View style={styles.container}>
             <View style={styles.favoriteLine}>
                 <Text style={styles.favoriteLineTextLeft} >常用功能</Text>
-                <View style={[{ flex: 1, flexDirection: 'row' }]}>
+                <ScrollView style={[{ flex: 1, flexDirection: 'row' }]} horizontal={true} >
                     {
                         list.map(item => {
                             return (item.category != "system") ? <IconFont style={styles.smallIcon} name={item.icon} size={30} /> : null;
                         })
                     }
-                </View>
+                </ScrollView>
                 <TouchableHighlight style={styles.favoriteLineTextRight} onPress={this.onPress}>
                     <Text style={styles.button}>{this.state.editing ? '保存' : '编辑'}</Text>
                 </TouchableHighlight>
@@ -285,6 +307,8 @@ class FavoriteLine extends PureComponent {
 }
 
 const { width, height } = Dimensions.get('window');
+const WIDTH = width / 4;
+const HEIGHT = WIDTH;
 class DragableEntryList extends PureComponent {
     static defaultProps = {
         column: 4,
@@ -304,12 +328,13 @@ class DragableEntryList extends PureComponent {
     }
     UNSAFE_componentWillUpdate(props) {
         if (this.state.dragging && this.state.dragEntry) {
+            LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
             const dragIndex = props.selectedList.findIndex(item => item.key === this.state.dragEntry.key);
             this.setState({
                 dragIndex: dragIndex
             });
         }
-        LayoutAnimation.spring();
+        // LayoutAnimation.spring();
     }
     calcIndex = (nativeEvent) => {
         const { pageX, locationY } = nativeEvent;
@@ -325,6 +350,9 @@ class DragableEntryList extends PureComponent {
             const index = this.calcIndex(evt.nativeEvent);
             const top = Math.floor(index / this.props.column);
             const left = index % this.props.column;
+            if (this.props.selectedList.length <= index) {
+                return;
+            }
             const dragItem = this.props.selectedList[index];
             this.setState({
                 dragging: true,
@@ -337,6 +365,9 @@ class DragableEntryList extends PureComponent {
             })
         },
         onPanResponderMove: (evt, gestureState) => {
+            if(!this.state.dragging) {
+                return;
+            }
             const index = this.calcIndex(evt.nativeEvent);
             if (index !== this.state.dragIndex) {//需要交换两个Entry
                 if (!(index < 0 || index >= this.props.selectedList.length)) {
@@ -359,35 +390,41 @@ class DragableEntryList extends PureComponent {
             position: 'absolute',
             top: this.state.dragY,
             left: this.state.dragX,
+            transform: [{ scale: 1.1 }],
             borderWidth: 1,
             borderStyle: 'dotted',
             backgroundColor: 'aliceblue',
-            opacity: 0.5
         };
     }
     render() {
-        const { entryStyle, iconSize, iconStyle, selectedList } = this.props;
+        const { entryStyle, iconSize, iconStyle, selectedList, column } = this.props;
         const entryWidth = {
             width: `${100 / this.props.column}%`,
         }
         const dragEntry = this.state.dragEntry;
         const dragStyle = this.calcDragStyle();
-        return (<View style={styles.entryList}
+        return (<View style={[styles.entryList, {
+            height: HEIGHT * Math.ceil(selectedList.length / this.props.column),
+        }]}
             {...this.panResponder.panHandlers}
         >
             {
-                selectedList.map(item => {
+                selectedList.map((item, index) => {
                     return <DragableEntry
                         // panHandler={this.panResponder.panHandlers}
                         key={item.key}
+                        position={index}
                         icon={item.icon}
                         text={item.text}
                         iconSize={iconSize}
                         iconStyle={iconStyle}
+                        width={WIDTH}
+                        height={HEIGHT}
+                        column={column}
                         removable={true}
                         entry={item}
                         onRemove={this.onRemove}
-                        containerStyle={[entryWidth, entryStyle]}
+                        containerStyle={[entryStyle]}
                     />;
                 })
             }
@@ -397,10 +434,16 @@ class DragableEntryList extends PureComponent {
                     icon={dragEntry.icon}
                     text={dragEntry.text}
                     iconSize={iconSize}
+                    width={WIDTH}
+                    height={HEIGHT}
                     iconStyle={iconStyle}
                     removable={false}
                     entry={dragEntry}
-                    containerStyle={[entryWidth, entryStyle, dragStyle]}
+                    translate={{
+                        x: this.state.dragX,
+                        y: this.state.dragY,
+                    }}
+                    containerStyle={[entryStyle, dragStyle]}
                 /> : null
             }
         </View>);

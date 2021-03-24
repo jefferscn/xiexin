@@ -19,7 +19,7 @@ export default {
                 },
                 {
                     "type": "element",
-                    "elementType": "SegementCombobox",
+                    "elementType": "TagCombobox",
                     "elementProps": {
                         "yigoid": "BillStatus_NODB4Other"
                     }

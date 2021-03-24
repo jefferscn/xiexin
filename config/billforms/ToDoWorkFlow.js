@@ -191,20 +191,6 @@ export default {
                                 "Dept",
                                 "Creator",
                                 "Cause",
-                                // {
-                                //     "type": "element",
-                                //     "elementType": "ListText",
-                                //     "elementProps": {
-                                //         yigoid: 'Creator'
-                                //     }
-                                // },
-                                // {
-                                //     "type": "element",
-                                //     "elementType": "ListText",
-                                //     "elementProps": {
-                                //         yigoid: 'Cause'
-                                //     }
-                                // },
                             ]
                         }
                     },
