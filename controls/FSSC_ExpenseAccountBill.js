@@ -30,6 +30,7 @@ const detailMeta = {
     "headTitle": "人员明细",
     "useBodyScroll": true,
     "primaryKey": "Personnel",
+    "removeable": false,
     "secondKey": [
         "ExplainDtl"
     ],
