@@ -756,7 +756,7 @@ const TodoListView = () => {
                 <TouchableHighlight style={styles.todolistviewitem} onPress={openTodoList}>
                     <View style={styles.todolistviewitemcontent}>
                         <IconFont style={styles.todolistviewicon} name="icon-ToDoListTotal" />
-                        <Text style={styles.todolistviewitemtext}>代办审批</Text>
+                        <Text style={styles.todolistviewitemtext}>待办审批</Text>
                         <TodoCount style={styles.todolistviewitembadge} yigoid="Grid1" sumField="C" />
                     </View>
                 </TouchableHighlight>

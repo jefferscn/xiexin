@@ -21,7 +21,7 @@ export const allList = [{
     icon: 'icon-wodebaoxiaodan',
     text: '报销单',
     category: '单据类型',
-    formKey: 'FSSC_HospitalityReimbursementView',
+    formKey: 'FSSC_AllReimbursementView',
     oid: "-1",
     favorite: true,
     color: '#63B5F6'
