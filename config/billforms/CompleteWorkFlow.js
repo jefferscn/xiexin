@@ -130,7 +130,7 @@ export default {
                             "type": "element",
                             "elementType": "SplitText",
                             "elementProps": {
-                                "yigoid": "FinishTime",
+                                "yigoid": "BillTime",
                                 "style": {
                                     "fontSize": 12,
                                     "textAlign": "right"
