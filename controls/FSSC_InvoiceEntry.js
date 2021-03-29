@@ -64,7 +64,7 @@ export default class InvoiceEntry extends PureComponent {
     componentWillUnmount() {
         this.backHandler && this.backHandler();
         const billform = this.context.getBillForm();
-        billform.form.onChildClose = null;
+        billform && billform.form && (billform.form.onChildClose = null);
     }
 
     addChildCloseHandler = () => {
