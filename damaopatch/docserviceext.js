@@ -12,12 +12,12 @@ YIUI.DocService.loadFormData = async function (form, oid, filterMap, condParas) 
     const formKey = form.getFormKey();
     form.refreshParas();
     const parameters = form.getParas();
-    const doc = YIUI.DataUtil.toJSONDoc(form.getDocument());
+    // const doc = YIUI.DataUtil.toJSONDoc(form.getDocument());
     const params = {
         cmd: 'RichDocumentLoadFormDataCmd',
         service: 'RichDocument',
         metaFormKey: formKey,
-        document: $.toJSON(doc)
+        // document: $.toJSON(doc)
     };
     if (parameters) {
         params.parameters = parameters.toJSON();
@@ -57,7 +57,6 @@ YIUI.DocService.loadFormData = async function (form, oid, filterMap, condParas) 
 };
 
 YIUI.DocService.newDocument = async function (formKey, formParas, parentForm) {
-    // const formKey = form.getFormKey(), formParas = form.getParas();
     const formScopes = await View.UIScopeTrees.get(formKey);
     const scope = formScopes['.DefaultFormulaUseParentDoc.'];
     let params = {
@@ -80,6 +79,7 @@ YIUI.DocService.newDocument = async function (formKey, formParas, parentForm) {
     const data = await Svr.Request.getData(params, undefined, false);
     const result = data;
     return result;
+    // return await YIUI.DocService.newDefaultDocument(this.form, parentForm);
 };
 
 YIUI.DocService.newDefaultDocument = async function (form, parentForm) {
