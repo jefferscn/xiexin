@@ -56,30 +56,35 @@ YIUI.DocService.loadFormData = async function (form, oid, filterMap, condParas) 
     }
 };
 
-YIUI.DocService.newDocument = async function (formKey, formParas, parentForm) {
-    const formScopes = await View.UIScopeTrees.get(formKey);
-    const scope = formScopes['.DefaultFormulaUseParentDoc.'];
-    let params = {
-        cmd: 'NewRichDocument',
-        service: 'RichDocument',
-        metaFormKey: formKey
-    };
-    if (formParas) {
-        params.parameters = formParas.toJSON();
+YIUI.DocService.oldNewDocument = YIUI.DocService.newDocument;
+YIUI.DocService.newDocument = async function (form, formParas, parentForm) {
+    // const formKey = form.getFormKey(), formParas = form.getParas();
+    // const formScopes = await View.UIScopeTrees.get(formKey);
+    // const scope = formScopes['.DefaultFormulaUseParentDoc.'];
+    // let params = {
+    //     cmd: 'NewRichDocument',
+    //     service: 'RichDocument',
+    //     metaFormKey: formKey
+    // };
+    // if (formParas) {
+    //     params.parameters = formParas.toJSON();
+    // }
+    // if (scope && scope.includeParentDocument && parentForm) {
+    //     const parentFormKey = parentForm.getFormKey();
+    //     const parentDoc = YIUI.DataUtil.toJSONDoc(parentForm.getDocument());
+    //     params.parentFormKey = parentFormKey;
+    //     params.parentDocument = $.toJSON(parentDoc);
+    //     if (parentForm.getParas()) {
+    //         params.parentParameters = parentForm.getParas().toJSON();
+    //     }
+    // }
+    // const data = await Svr.Request.getData(params, undefined, false);
+    // const result = data;
+    // return result;
+    if(form.getParentForm) {//form对象
+        return await YIUI.DocService.newDefaultDocument(form, form.getParentForm());
     }
-    if (scope && scope.includeParentDocument && parentForm) {
-        const parentFormKey = parentForm.getFormKey();
-        const parentDoc = YIUI.DataUtil.toJSONDoc(parentForm.getDocument());
-        params.parentFormKey = parentFormKey;
-        params.parentDocument = $.toJSON(parentDoc);
-        if (parentForm.getParas()) {
-            params.parentParameters = parentForm.getParas().toJSON();
-        }
-    }
-    const data = await Svr.Request.getData(params, undefined, false);
-    const result = data;
-    return result;
-    // return await YIUI.DocService.newDefaultDocument(this.form, parentForm);
+    return await YIUI.DocService.oldNewDocument.apply(this, arguments);
 };
 
 YIUI.DocService.newDefaultDocument = async function (form, parentForm) {

@@ -224,8 +224,11 @@ const formExt = {
         const postShow = this.postShow;
 
         if (this.getOID() == -1 || this.operationState === YIUI.Form_OperationState.New) { // 非具体单据
-            const data = await YIUI.DocService.newDocument(this.getFormKey(), this.paras, this.getParentForm());
-            const doc = YIUI.DataUtil.fromJSONDoc(data);
+            const data = await YIUI.DocService.newDocument(this, this.paras, this.getParentForm());
+            let doc = data;
+            if(!doc.setNew) {//如果不是document对象
+                doc = YIUI.DataUtil.fromJSONDoc(data);
+            }
             if (this.type === YIUI.Form_Type.Entity) {
                 this.setOID(doc.oid);
             }
@@ -247,8 +250,11 @@ const formExt = {
                 });
             }
         } else {
-            const data = await YIUI.DocService.newDocument(this.getFormKey(), this.paras, this.getParentForm());
-            const doc = YIUI.DataUtil.fromJSONDoc(data);
+            const data = await YIUI.DocService.newDocument(this, this.paras, this.getParentForm());
+            let doc = data;
+            if(!doc.setNew) {//如果不是document对象
+                doc = YIUI.DataUtil.fromJSONDoc(data);
+            }
             const oid = this.getOID();
             doc.oid = oid;
             this.setDocument(doc);
